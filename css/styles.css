@@ -1,0 +1,53 @@
+/* Custom style sheet */
+
+html, body {
+  font-color: red;
+  background: url("../images/unsplash_grass.jpg") fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.container {
+
+}
+
+/* Header */
+
+.header {
+  padding: 30px 0;
+  position: relative;
+  border: 1px;
+}
+
+
+/* Body */
+
+.main {
+  margin: 10px auto;
+  background: #FFF;
+  color: #000;
+  height: 400px;
+  padding: 30px 0;
+  text-align: center;
+}
+
+.center-image{
+  width: 200px;
+  margin-bottom: 15px;
+}
+
+.main h1 {
+  font-size: 22px;
+  color: #696969;
+}
+
+.main p {
+}
+/* Footer */
+
+.footer {
+  padding: 30px 0;
+}
+
