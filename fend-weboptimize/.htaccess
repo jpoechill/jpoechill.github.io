@@ -1,28 +1,13 @@
-# Browser Caching
+# set browser caching
 
-FileETag MTime Size
+ExpiresActive On
+ExpiresByType image/gif A600
+ExpiresByType image/png A600
+ExpiresByType image/jpeg A600
+ExpiresByType image/x-icon A600
+ExpiresByType application/pdf A600
+ExpiresByType application/x-javascript A600
+ExpiresByType text/plain A600
+ExpiresByType text/css A600
 
-<IfModule expires_module>
-    ExpiresActive on
-    ExpiresByType text/plain "access plus 1 week"
-    ExpiresByType text/css "access plus 1 week"
-    ExpiresByType text/javascript "access plus 1 week"
-    ExpiresByType application/javascript "access plus 1 week"
-    ExpiresByType application/x-javascript "access plus 1 week"
-    ExpiresByType image/svg+xml "access plus 1 week"
-    ExpiresByType image/gif "access plus 1 week"
-    ExpiresByType image/png "access plus 1 week"
-    ExpiresByType image/ico "access plus 1 week"
-    ExpiresByType image/x-icon "access plus 1 week"
-    ExpiresByType image/jpg "access plus 1 week"
-    ExpiresByType image/jpe "access plus 1 week"
-    ExpiresByType image/jpeg "access plus 1 week"
-    ExpiresByType font/truetype "access plus 1 week"
-    ExpiresByType application/x-font-ttf "access plus 1 week"
-    ExpiresByType font/opentype "access plus 1 week"
-    ExpiresByType application/x-font-otf "access plus 1 week"
-    ExpiresByType application/font-woff "access plus 1 week"
-    ExpiresByType application/vnd.ms-fontobject "access plus 1 week"
-    ExpiresByType application/x-shockwave-flash "access plus 1 week"
-    ExpiresByType application/x-httpd-php-source "access plus 1 week"
-</IfModule>
+# end browser caching
