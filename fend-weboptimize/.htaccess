@@ -1,13 +1,28 @@
-# set browser caching
+# Browser Caching
 
-ExpiresActive On
-ExpiresByType image/gif "public, max-age=600"
-ExpiresByType image/png "public, max-age=600"
-ExpiresByType image/jpeg "public, max-age=600"
-ExpiresByType image/x-icon "public, max-age=600"
-ExpiresByType application/pdf "public, max-age=600"
-ExpiresByType application/x-javascript "public, max-age=36000"
-ExpiresByType text/plain "public, max-age=600"
-ExpiresByType text/css "public, max-age=600"
+FileETag MTime Size
 
-# end browser caching
+<IfModule expires_module>
+    ExpiresActive on
+    ExpiresByType text/plain "public, max-age=600"
+    ExpiresByType text/css "public, max-age=600"
+    ExpiresByType text/javascript "public, max-age=600"
+    ExpiresByType application/javascript "public, max-age=600"
+    ExpiresByType application/x-javascript "public, max-age=600"
+    ExpiresByType image/svg+xml "public, max-age=600"
+    ExpiresByType image/gif "public, max-age=600"
+    ExpiresByType image/png "public, max-age=600"
+    ExpiresByType image/ico "public, max-age=600"
+    ExpiresByType image/x-icon "public, max-age=600"
+    ExpiresByType image/jpg "public, max-age=600"
+    ExpiresByType image/jpe "public, max-age=600"
+    ExpiresByType image/jpeg "public, max-age=600"
+    ExpiresByType font/truetype "public, max-age=600"
+    ExpiresByType application/x-font-ttf "public, max-age=600"
+    ExpiresByType font/opentype "public, max-age=600"
+    ExpiresByType application/x-font-otf "public, max-age=600"
+    ExpiresByType application/font-woff "public, max-age=600"
+    ExpiresByType application/vnd.ms-fontobject "public, max-age=600"
+    ExpiresByType application/x-shockwave-flash "public, max-age=600"
+    ExpiresByType application/x-httpd-php-source "public, max-age=600"
+</IfModule>
