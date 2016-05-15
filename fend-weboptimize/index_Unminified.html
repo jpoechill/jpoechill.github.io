@@ -148,5 +148,29 @@
   window.attachEvent("onload", downloadJSAtOnload);
   else window.onload = downloadJSAtOnload;
   </script>
+
+  /* JavaScript *//**
+  * I put mine in the footer. You can experiment with where this goes.
+  *
+  */<script src="js/fontfaceobserver.js"></script>
+<script>
+(function( w ){
+    // if the class is already set, we're good.
+    if( w.document.documentElement.className.indexOf( "fonts-loaded" ) > -1 ){
+        return;
+    }
+    var fontA = new w.FontFaceObserver( "Open Sans", {
+        weight: 400
+    });
+    var fontB = new w.FontFaceObserver( "Open Sans", {
+        weight: 700
+    });
+    w.Promise
+        .all([fontA.check(), fontB.check()])
+        .then(function(){
+            w.document.documentElement.className += " fonts-loaded";
+        });
+}( this ));
+</script>
   </body>
 </html>
