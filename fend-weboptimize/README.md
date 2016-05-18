@@ -9,8 +9,8 @@ The website included is part of a Browser and Website Performance optimization p
 1. Load index.html/main.js in your broswer of choice to view portfolio homepage
 2. Alternatively, load view/index.html to view pizza site page.
 3. Observe and record performance data
-⋅⋅View PageSpeed score by entering url of site [here](https://developers.google.com/speed/pagespeed/),
-⋅⋅View FPS with Google Chrome Dev Tools using Command + Alt + I.
+⋅⋅1. View PageSpeed score by entering url of site [here](https://developers.google.com/speed/pagespeed/),
+⋅⋅2. View FPS with Google Chrome Dev Tools using Command + Alt + I.
 
 -------------------------------
 
