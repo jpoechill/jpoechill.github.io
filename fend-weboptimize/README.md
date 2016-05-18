@@ -7,10 +7,8 @@ The website included is part of a Browser and Website Performance optimization p
 ### Installation
 
 1. Load index.html/main.js in your broswer of choice to view portfolio homepage
-
 2. Alternatively, load view/index.html to view pizza site page.
-
-3 View PageSpeed score by entering url of site [here](https://developers.google.com/speed/pagespeed/), and observe FPS with Google Chrome Dev Tools using Command + Alt + I.
+3. View PageSpeed score by entering url of site [here](https://developers.google.com/speed/pagespeed/), and observe FPS with Google Chrome Dev Tools using Command + Alt + I.
 
 -------------------------------
 
@@ -36,5 +34,6 @@ Optimizations for: view/js/main.js, view/styles/styles.css, view/index.html
 
 ∂ May 2016
 Created for Frontend NanoDegree Course (Udacity)
+
 Developer, technician: jPo Rith (http://github.com/jpoechill)
 
