@@ -424,21 +424,26 @@ var resizePizzas = function(size) {
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
+    var newWidth;
+
     switch(size) {
         case "1":
-          return 0.25;
+          newWidth = 25;
+          break;
         case "2":
-          return 0.3333;
+          newWidth = 33.3;
+          break;
         case "3":
-          return 0.5;
+          newWidth = 50;
+          break;
         default:
           console.log("bug in sizeSwitcher");
     }
 
-    var randomPizzas = document.getElementsByClassName(".randomPizzaContainer");
+    var randomPizzas = document.querySelectorAll(".randomPizzaContainer");
 
     for (var i = 0; i < randomPizzas.length; i++) {
-      randomPizzas[i].style.width = newwidth + "%";
+      randomPizzas[i].style.width = newWidth + "%";
     }
   }
 
@@ -490,15 +495,6 @@ function updatePositions() {
   var items = document.getElementsByClassName('mover');
   var itemslength = items.length;
 
-  // console.log("---------");
-  // var output1 = document.querySelectorAll('.mover');
-  // var output2 = document.getElementsByClassName('mover');
-  // console.log('qSA:', output1);
-  // console.log('gEBCN:', output2);
-  // console.log('7th element of qSA:', output1[6]);
-  // console.log('7th element of gEBCN:', output2[6]);
-  // console.log("---------");
-
   var phaseArray = [];
 
   for (i = 0; i < 5; i++) {
@@ -532,9 +528,15 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
+
   var qSelectorformovingPizzas1 = document.querySelector("#movingPizzas1");
 
-  for (var i = 0; i < 200; i++) {
+  // Create this many pizzas
+  var pizzaWidth = Math.floor(window.innerWidth / 73.33);
+  var pizzaHeight = Math.floor(window.innerHeight / 100);
+  var NumAllPizzas = pizzaWidth * pizzaHeight / 4;
+
+  for (var i = 0; i < NumAllPizzas; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
