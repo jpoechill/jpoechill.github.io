@@ -37,5 +37,5 @@ Optimizations for: view/js/main.js, view/styles/styles.css, view/index.html
 ∂ May 2016
 Created for Frontend NanoDegree Course (Udacity)
 
-Developer, technician: Po Rith (http://github.com/jpoechill)
+Developer, technician: jPo Rith (http://github.com/jpoechill)
 
