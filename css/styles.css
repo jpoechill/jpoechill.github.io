@@ -25,17 +25,25 @@ html, body {
 
 /* Body */
 
+.sidebar {
+  padding: 12px 0 20px 0;
+}
+
 .main {
   margin: 10px auto;
   background: #FFF;
   color: #000;
-  padding: 30px 0;
+  padding: 8px 0 20px 0;
   text-align: center;
 }
 
 .center-image{
   width: 200px;
   margin-bottom: 14px;
+}
+
+.main-header-nav {
+  vertical-align: text-top;
 }
 
 .main h1 {
@@ -90,6 +98,25 @@ html, body {
   text-align: left;
 }
 
+.list-group {
+  text-align: left;
+}
+
+.language-title {
+  font-weight: bold;
+  margin: 0 0 0 0;
+}
+
+.main-footer-small {
+  font-size: small;
+}
+
+dl dt, dd {
+  font-weight: normal;
+  text-align: left;
+  color: #696969;
+}
+
 /* Footer */
 
 .adiv {
@@ -99,6 +126,6 @@ html, body {
 }
 
 .footer {
-  padding: 30px 0;
+  padding: 0px 0;
 }
 
