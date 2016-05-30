@@ -92,6 +92,7 @@ html, body {
 .main-info .p-header {
   text-align: left;
   font-style: italic;
+  text-align: right;
 }
 
 .main-info p {
