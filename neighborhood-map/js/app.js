@@ -66,35 +66,38 @@ var controller = {
 
     initMap: function () {
         var map;
+        var infowindow = [];
 
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 37.809874, lng: -122.268523},
           zoom: 13,
           // mapTypeId: google.maps.MapTypeId.SATELLITE
         });
+
         // Generate markers
         for (var i = 0; i < model.locations.length; i++) {
-            console.log(model.locations[i].name);
-
-            marker = new google.maps.Marker({
-                position: new google.maps.LatLng(model.locations[i].long, model.locations[i].lat),
-                map: map
-            });
-
-            var contentString = $('<div class="marker-info-win">' +
+            //Set up content string
+            contentString = $('<div class="marker-info-win">' +
             '<div class="marker-inner-win"><span class="info-content">' +
             '<h4 class="marker-heading">' + model.locations[i].name + '</h4>'+
             model.locations[i].description + '</span>' + '</div></div>');
 
             //Create an infoWindow
-            var infowindow = new google.maps.InfoWindow();
+            infoWindow = new google.maps.InfoWindow({content: contentString[0]});
+
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(model.locations[i].long, model.locations[i].lat),
+                map: map,
+                info: contentString[0]
+            });
 
             //set the content of infoWindow
-            infowindow.setContent(contentString[0]);
+            infoWindow.setContent( marker.info );
 
             //add click event listener to marker which will open infoWindow
             google.maps.event.addListener(marker, 'click', function() {
-                infowindow.open(map, this); // click on marker opens info window
+                infoWindow.setContent(this.info);
+                infoWindow.open(map, this);
             });
         }
     }
@@ -144,33 +147,35 @@ function initMap() {
             map: map
         });
 
-        // // Ajax call for venue ID
-        // $.ajax({
-        //   type: "GET",
-        //   dataType: "jsonp",
-        //   url: "https://api.foursquare.com/v2/venues/explore?ll=" + locations[i].long + "," + locations[i].lat + "&oauth_token=X0ZIFSKLDPONPOQ3EMQLQFZDNYM1IMOAYUMWFDMXHE1ZCIVQ&v=20160529",
-        //   success: function(data) {
-        //     this_venue_id = data;
-        //     console.log(this_venue_id);
-        //   }
-        // });
+    //     // // Ajax call for venue ID
+    //     // $.ajax({
+    //     //   type: "GET",
+    //     //   dataType: "jsonp",
+    //     //   url: "https://api.foursquare.com/v2/venues/explore?ll=" + locations[i].long + "," + locations[i].lat + "&oauth_token=X0ZIFSKLDPONPOQ3EMQLQFZDNYM1IMOAYUMWFDMXHE1ZCIVQ&v=20160529",
+    //     //   success: function(data) {
+    //     //     this_venue_id = data;
+    //     //     console.log(this_venue_id);
+    //     //   }
+    //     // });
 
-        // var aJaxInfo = {};
+    //     // var aJaxInfo = {};
 
-        // // Ajax call for venue Venue Info
-        // $.ajax({
-        //   type: "GET",
-        //   dataType: "jsonp",
-        //   url: "https://api.foursquare.com/v2/venues/" + this_venue_id + "?oauth_token=X0ZIFSKLDPONPOQ3EMQLQFZDNYM1IMOAYUMWFDMXHE1ZCIVQ&v=20160529",
-        //   success: function(data) {
-        //     // aJaxInfo.name = data.response.groups;
-        //     console.log(this_venue_id);
-        //     // aJaxInfo.location = data.response.groups.venue.location.formattedAddress;
-        //     // aJaxInfo.check_ins = data.response.groups.venue.stats.checkinsCount;
-        //     // aJaxInfo.photos = "";
-        //     // aJaxInfo.description = "";
-        //   }
-        // });
+    //     // // Ajax call for venue Venue Info
+    //     // $.ajax({
+    //     //   type: "GET",
+    //     //   dataType: "jsonp",
+    //     //   url: "https://api.foursquare.com/v2/venues/" + this_venue_id + "?oauth_token=X0ZIFSKLDPONPOQ3EMQLQFZDNYM1IMOAYUMWFDMXHE1ZCIVQ&v=20160529",
+    //     //   success: function(data) {
+    //     //     // aJaxInfo.name = data.response.groups;
+    //     //     console.log(this_venue_id);
+    //     //     // aJaxInfo.location = data.response.groups.venue.location.formattedAddress;
+    //     //     // aJaxInfo.check_ins = data.response.groups.venue.stats.checkinsCount;
+    //     //     // aJaxInfo.photos = "";
+    //     //     // aJaxInfo.description = "";
+    //     //   }
+    //     // });
+        console.log(model.locations[i].name);
+        console.log(model.locations[i].description);
 
         //Content structure of info Window for the Markers
         var contentString = $('<div class="marker-info-win">' +
@@ -187,6 +192,7 @@ function initMap() {
         //add click event listener to marker which will open infoWindow
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map, this); // click on marker opens info window
+            console.log(this);
         });
     }
 }
