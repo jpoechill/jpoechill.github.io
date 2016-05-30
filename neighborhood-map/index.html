@@ -28,34 +28,22 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
-                    <a href="#">Movie Theaters</a>
+                    <a href="#"><strong data-bind="text: app_name"></strong></a>
                 </li>
-                <li>
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <div class="input-group">
+                        <input type="text" class="form-control input-group" placeholder="Search...">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-filter"></span></button>
+                        </span>
+                    </div>
                 </li>
+                <!-- ko foreach: locations -->
                 <li>
-                    <a href="#">Grand Lake Theatre</a>
+                    <a href="#" data-bind="text: name"></a>
                 </li>
+                <!-- /ko -->
                 <li>
-                    <a href="#">Piedmont Theatre</a>
-                </li>
-                <li>
-                    <a href="#">The New Parkway Theater</a>
-                </li>
-                <li>
-                    <a href="#">AMC Bay Street 16</a>
-                </li>
-                <li>
-                    <a href="#">The Paramount Theatre</a>
-                </li>
-                <li>
-                    <a href="#">The Palace Theater</a>
-                </li>
-                <li>
-                    <a href="#">Instagram API</a>
-                </li>
-                <li>
-                    <a href="#">Yelp API</a>
+                    <a href="#">Google API</a>
                 </li>
                 <li>
                     <a href="#">Foursquare API</a>
@@ -81,43 +69,7 @@
 
 <div id="map"></div>
 
-<script>
-  var map;
-
-  function initMap() {
-
-    var locations = [
-      ['amcbaystreet', 37.833407, -122.291631],
-      ['grandlake', 37.811539, -122.247356],
-      ['piedmont', 37.827362, -122.250927],
-      ['newparkway', 37.813960, -122.267457],
-      ['paramount', 37.809874, -122.268523],
-      ['thepalace', 37.784373, -122.236023]
-    ];
-
-    var amcbaystreet = {lat: 37.833407, lng: -122.291631};
-
-    map = new google.maps.Map(document.getElementById('map'), {
-      center: {lat: 37.809874, lng: -122.268523},
-      zoom: 13,
-      // mapTypeId: google.maps.MapTypeId.SATELLITE
-    });
-
-    for (var i = 0; i < locations.length; i++) {
-      marker = new google.maps.Marker({
-        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-        map: map
-      });
-    }
-
-    // var marker = new google.maps.Marker({
-    //   position: amcbaystreet,
-    //   map: map,
-    //   title: 'Hello World!'
-    // });
-  }
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_4N-V3lOc9Da9_XF-8mt5yumBPP1VB70&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_4N-V3lOc9Da9_XF-8mt5yumBPP1VB70&callback=controller.initMap"
 async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/knockout-3.4.0.js"></script>
