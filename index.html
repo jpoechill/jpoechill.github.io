@@ -6,6 +6,7 @@
     <title>on Github ...</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
 </head>
 <body>
     <!-- Header Container -->
@@ -26,7 +27,12 @@
                 </div>
                 <div class="col-md-9 main-info">
                     <!-- Top navigation -->
-                    <div class="row main-header-nav"><p class="p-header">Scripting | Blog | About | Contact</p></div>
+                    <div class="row main-header-nav"><p class="p-header">
+                        <a href="#" id="myelement">Scripting</a> |
+                        <a href="#">Blog</a> |
+                        <a href="#" id="aboutlink">About</a> |
+                        <a href="#" id="contactlink">Contact</a></p>
+                    </div>
                     <div class="row" style="overflow-y:scroll; overflow-x:hidden; height:400px;">
                     <!-- Main body of content/list items -->
                     <!-- <p>Ruby (Ruby on Rails)<br />
@@ -34,17 +40,31 @@
                         Survivr Game.<br />
                         Colorizr (Ruby Gem).<br />
                         Udacitask.</p> -->
-                    <p class="language-title">Ruby/Ruby on Rails</p>
-                    <dl>
-                      <dt>Toy City App. Survivr Game. Colorizr (Ruby Gem). Udacitask.</dt>
-                      <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi soluta veniam illum neque commodi vel perferendis omnis a quis quam amet deleniti doloremque eaque nisi eum ipsam quaerat, quo explicabo exercitationem quasi. Quidem totam rerum, ea voluptas pariatur. Architecto neque, mollitia vitae eius corporis, excepturi suscipit autem aliquid doloribus quam enim, quod maiores quos iste aliquam, deserunt non! Autem adipisci, rem cupiditate praesentium eveniet at ipsa quae! Labore assumenda vero, cupiditate sit quas fuga, qui culpa voluptas facilis quos in velit iusto delectus architecto accusantium pariatur iure quaerat fugit laborum. Ullam culpa quos minus quis debitis repudiandae, eveniet aut aperiam animi perferendis nobis iure nulla vel corporis delectus, atque fugit velit, eligendi facere, ex deserunt officiis! Cum, facere enim voluptatem. Voluptatibus sint et enim repellat.</dd>
-                    </dl>
-
-                    <p class="language-title">Javascript (jQuery, Angular, Node, Meteor)</p>
-                    <dl>
-                      <dt>Portfolio Website. Interactive Resume. Frogger Arcade Game Clone. Website Optimization.</dt>
-                      <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eveniet nesciunt nulla, ipsam dicta ea in repudiandae, dolor aliquid quis accusamus tenetur totam vel, eos sequi enim ullam deleniti ad quidem nisi repellendus, blanditiis delectus inventore voluptatem. Alias, quibusdam sequi. Quaerat illo animi accusantium, maxime, voluptatem vero quos hic? Atque optio iure repudiandae veniam sapiente alias, earum esse numquam eaque, amet inventore culpa nisi, maiores odit. Possimus sunt temporibus beatae cumque deserunt, nam sit id natus saepe est? Nemo aliquam facilis cumque consectetur deserunt, harum expedita ab earum eum perspiciatis quasi perferendis alias et iusto odio quas exercitationem praesentium vitae impedit corporis eius officia numquam sit rerum! Magni sapiente aliquam nesciunt tempore in, harum dolores, sequi dolore temporibus ullam ut reprehenderit beatae eum libero expedita quo incidunt rerum commodi ratione.</dd>
-                    </dl>
+                    <div id="ruby">
+                        <p class="language-title myContent">Ruby/Ruby on Rails</p>
+                        <dl class="toggle">
+                          <dt>Toy City App. Survivr Game. Colorizr (Ruby Gem). Udacitask.</dt>
+                          <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi soluta veniam illum neque commodi vel perferendis omnis a quis quam amet deleniti doloremque eaque nisi eum ipsam quaerat, quo explicabo exercitationem quasi. Quidem totam rerum, ea voluptas pariatur. Architecto neque, mollitia vitae eius corporis, excepturi suscipit autem aliquid doloribus quam enim, quod maiores quos iste aliquam, deserunt non! Autem adipisci, rem cupiditate praesentium eveniet at ipsa quae! Labore assumenda vero, cupiditate sit quas fuga, qui culpa voluptas facilis quos in velit iusto delectus architecto accusantium pariatur iure quaerat fugit laborum.</dd>
+                        </dl>
+                    </div>
+                    <div id="javascript">
+                        <p class="language-title">Javascript (jQuery, Angular, Node, Meteor)</p>
+                        <dl>
+                          <dt>Portfolio Website. Interactive Resume. Frogger Arcade Game Clone. Website Optimization.</dt>
+                          <dd>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi eveniet nesciunt nulla, ipsam dicta ea in repudiandae, dolor aliquid quis accusamus tenetur totam vel, eos sequi enim ullam deleniti ad quidem nisi repellendus, blanditiis delectus inventore voluptatem. Alias, quibusdam sequi. Quaerat illo animi accusantium, maxime, voluptatem vero quos hic? Atque optio iure repudiandae veniam sapiente alias, earum esse numquam eaque, amet inventore culpa nisi, maiores odit.</dd>
+                        </dl>
+                    </div>
+                    <div id="about">
+                        <p class="language-title">Who am I?</p>
+                        <dl>
+                          <dt>My name is Po, and I'm just an everyday coder. Really appreciate you coming by.</dt>
+                        </dl>
+                    </div>
+                    <div id="contact">
+                        <dl>
+                          <dt>poamrong@rith.com</dt>
+                        </dl>
+                    </div>
                     <p class="main-footer-small">ß 2016</p>
                 </div>
             </div>
@@ -56,5 +76,30 @@
         <div class="container">
         </div>
     </div>
+    <script type="text/javascript">
+$('#about').toggle();
+$('#contact').toggle();
+
+$('#contactlink').click(function(){
+    $('#about').toggle();
+    $('#contact').toggle();
+    $('#ruby').toggle();
+    $('#javascript').toggle();
+    $('#about').toggle();
+});
+
+$('#aboutlink').click(function(){
+    $('#ruby').toggle();
+    $('#javascript').toggle();
+    $('#about').toggle();
+});
+
+$('#myelement').click(function(){
+      $('#ruby').toggle();
+      $('#javascript').toggle();
+  });
+</script>
 </body>
+
+
 </html>
