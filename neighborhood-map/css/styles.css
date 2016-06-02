@@ -2,3 +2,8 @@
 
 #google_map {width: 90%; height: 500px;margin-top:0px;margin-left:auto;margin-right:auto;}
     h1.heading{text-align:center;font: 18px Georgia, "Times New Roman", Times, serif;}
+
+.map-info-window {
+    width:200px;
+    height:200px;
+}
