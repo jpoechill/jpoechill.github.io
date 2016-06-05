@@ -1,7 +1,7 @@
 // Javascript for Cat Clicker App
 
 var model = {
-    app_name: ko.observable("List View APP Title"),
+    app_name: ko.observable("App Title"),
     sorted: ko.observable(0),
     locations: ko.observableArray([
         {
@@ -55,34 +55,7 @@ var controller = {
     init: function () {
         this.setup_jq();
 
-        // model = ko.observableArray()
         ko.applyBindings(model);
-    },
-
-    update_Locations_info: function(index, new_attr) {
-        // Clone/duplicate objects
-        var local = jQuery.extend(true, {}, model.locations()[index]);
-        var partial_object = jQuery.extend(true, {}, new_attr);
-
-        // Set up keys to be replaced
-        var keys = [];
-        for (i in partial_object) {
-            keys.push(i);
-        }
-
-        // Sort through standing object, and replace var per matching key
-        for (i in local) {
-            for (var t = 0; t <= keys.length; t++){
-                // If match found
-                if (i == keys[t]) {
-                    // Replace key with var
-                    local[i] = partial_object[keys[t]];
-                }
-            }
-        }
-
-        // Make change
-        model.locations.replace(model.locations()[index], local);
     },
 
     setup_jq: function () {
@@ -93,45 +66,52 @@ var controller = {
         });
     },
 
-    sortItems_byname: function (){
-        // Sort by name (alphabetical)
-        objects_sorted = model.locations().sort(
-            function(a, b){
-            var nameA = a.name.toLowerCase();
-            var nameB = b.name.toLowerCase();
-
-            console.log("Sorting: " + model.sorted());
-
-            if (nameA < nameB) {//sort string ascending
-                // model.sorted(1);
-                return -1;
-            }
-            if (nameA > nameB) {
-                return 1;
-                return 0; //default return value (no sorting)
-            }
-        });
-
-        // Check if sorted, and reverse if so
-        if (model.sorted() == 0) {
-            console.log(model.sorted());
-            model.sorted(1);
-            model.locations(objects_sorted);
-        } else if (model.sorted() == 1) {
-            console.log(model.sorted());
-            model.sorted(0);
-            model.locations(objects_sorted.reverse());
-        }
-    },
-
-    sortItems_byNum: function () {
-        // Sort by value (numeric)
-        // model.locations(model.locations().sort(function(a, b){ return a.venue_id-b.venue_id }));
-    },
-
     sayHello: function () {
         console.log("Hello, World!");
+    },
+
+    query: ko.observable(''),
+
+      search: function(value) {
+        // remove all the current beers, which removes them from the view
+        viewModel.locations.removeAll();
+
+        for(var x in locations) {
+          if(locations[x].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+            viewModel.locations.push(locations[x]);
+          }
+        }
     }
 };
+
+// ** -- viewModel // Model locations -- ** //
+
+var locations = [
+  {name:"Grand Lake Theater"},
+  {name:"The Paramound"},
+  {name:"AMC Baystreet 16"},
+];
+
+// ** -- viewModel -- ** //
+
+var viewModel = {
+      locations: ko.observableArray(locations),
+
+      query: ko.observable(''),
+
+      search: function(value) {
+        // remove all the current beers, which removes them from the view
+        viewModel.locations.removeAll();
+
+        for(var x in locations) {
+          if(locations[x].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+            viewModel.locations.push(locations[x]);
+          }
+        }
+      }
+};
+
+viewModel.query.subscribe(viewModel.search);
+// ko.applyBindings(viewModel);
 
 controller.init();

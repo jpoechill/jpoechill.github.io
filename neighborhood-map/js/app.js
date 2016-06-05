@@ -1,85 +1,115 @@
 // Javascript for Cat Clicker App
 var model = {
+    id: 1,
     app_name: ko.observable("Po's Movie Theaters"),
     sorted: ko.observable(0),
+    query: ko.observable(''),
+    markers: [],
     locations: ko.observableArray([
         {
-            name: "Grand Lake Theatre",
-            venue_id: "4a3304acf964a520f19a1fe3",
+            name: "ABCDEF",
+            id: 0,
+            venue_id: "",
+            marker: null,
             photo: null,
             description: "Beautiful theater with decent movie selection - free popcorn on weekdays!",
             address: null,
-            phonenumber: null,
-            url: null,
+            phonenumber: "No phone",
+            url: "No homepage",
             twitter: null,
             checkins: null,
             long: 37.811539,
             lat: -122.247356
         },
         {
-            name: "Piedmont Theatre",
-            venue_id: "49da4162f964a520655e1fe3",
+            name: "BCDEF",
+            id: 1,
+            venue_id: "",
+            marker: null,
             photo: null,
             description: "Reclining with enough room for people to get by without you budging.",
             address: null,
-            phonenumber: null,
-            url: null,
+            phonenumber: "No phone",
+            url: "No homepage",
             twitter: null,
             checkins: null,
             long: 37.827362,
             lat: -122.250927
         },
         {
-            name: "The New Parkway Theater",
-            venue_id: "4f2c9d97e4b010c5f4f9ec08",
+            name: "CDEF",
+            id: 2,
+            venue_id: "",
+            marker: null,
             photo: null,
             description: "Fun place to go, grab a snack, and enjoy a comfortable movie experience.",
             address: null,
-            phonenumber: null,
-            url: null,
+            phonenumber: "No phone",
+            url: "No homepage",
             twitter: null,
             checkins: null,
             long: 37.813960,
             lat: -122.267457
         },
         {
-            name: "AMC Bay Street 16",
-            venue_id: "4a333748f964a520199b1fe3",
+            name: "DEF",
+            id: 3,
+            venue_id: "",
+            marker: null,
             photo: null,
             description: "Very clean and organized lobby, includes bar separate of candy and popcorn area.",
             address: null,
-            phonenumber: null,
-            url: null,
+            phonenumber: "No phone",
+            url: "No homepage",
             twitter: null,
             checkins: null,
             long: 37.833407,
             lat: -122.291631
         },
         {
-            name: "The Paramount Theatre",
+            name: "EF",
+            id: 4,
             venue_id: "",
+            marker: null,
             photo: null,
             description: "Elaborate art deco architecture, good occasional history tour of it.",
             address: null,
-            phonenumber: null,
-            url: null,
+            phonenumber: "No phone",
+            url: "No homepage",
             twitter: null,
             checkins: null,
             long: 37.809874,
             lat: -122.268523
         },
         {
-            name: "The Palace Theatre",
-            venue_id: "53eaa629498e04e719f8043e",
+            name: "F",
+            id: 5,
+            venue_id: "",
+            marker: null,
             photo: null,
             description: "Large venue with a pretty distinct interior styling. Street parking is a bit sketchy though.",
             address: null,
-            phonenumber: null,
-            url: null,
+            phonenumber: "No phone",
+            url: "No homepage",
             twitter: null,
             checkins: null,
             long: 37.784373,
             lat: -122.236023
+        },
+        {
+            name: "G",
+            id: 6,
+            venue_id: "",
+            marker: null,
+            photo: null,
+            description: "Theater complex with multiple screens featuring new release films, plush seating & concession stand.",
+            address: null,
+            phonenumber: "No phone",
+            url: "No homepage",
+            twitter: null,
+            checkins: null,
+            long: 37.796034,
+            lat: -122.277372
         }
     ])
 };
@@ -90,8 +120,53 @@ var controller = {
         this.setup_jq();
         // this.sayHello();
 
-        // model = ko.observableArray()
         ko.applyBindings(model);
+    },
+
+    sayHello: function (){
+        console.log("Hello, World" + "!");
+        console.log(this.id);
+
+        for (var i = 0; i < model.locations().length; i ++){
+            if (i !== this.id){
+                model.locations()[i].marker.setVisible(false);
+            } else {
+                model.locations()[i].marker.setVisible(true);
+            }
+        }
+
+        google.maps.event.trigger(model.locations()[this.id].marker, 'click');
+    },
+
+    // search: function(value) {
+    //     this = model.locations();
+
+    //     // remove all the current beers, which removes them from the view
+    //     this.locations.removeAll();
+
+    //     for(var x in locations) {
+    //       if(locations[x].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+    //         viewModel.locations.push(locations[x]);
+    //       }
+    //     }
+    // },
+
+    fireAll: function (){
+
+        for (var i = 0; i < model.locations().length; i ++) {
+            google.maps.event.trigger(model.locations()[i].marker, 'click');
+        }
+    },
+
+    search: function(value) {
+        // remove all the current beers, which removes them from the view
+        viewModel.beers.removeAll();
+
+        for(var x in beers) {
+          if(beers[x].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+            viewModel.beers.push(beers[x]);
+          }
+        }
     },
 
     setup_jq: function () {
@@ -124,11 +199,8 @@ var controller = {
             }
         }
 
-        console.log("I made it!");
         // Make change
-
         model.locations.replace(model.locations()[index], local);
-        // model.app_name("Ooga Booga");
     },
 
     sortItems_byname: function (){
@@ -150,7 +222,7 @@ var controller = {
             }
         });
 
-        // Check if sorted, and reverse if so
+        // Check if already sorted, and reverse if so
         if (model.sorted() == 0) {
             console.log(model.sorted());
             model.sorted(1);
@@ -162,42 +234,63 @@ var controller = {
         }
     },
 
-    sayHello: function (){
-        console.log("Hello, World!");
+    createContent_String: function (a, b, c, d, e, f, g){
+        photo_with_image = "<img src=" + a +  ' width=\"26\" height=\"26\"> ';
+
+        return contentString = $('<div><div><span><p class= "big"><h4 style="margin-top: 10px; margin-bottom: 0px;">' +
+        b + "<br />" +
+        photo_with_image +
+        '<br /></h4><strong></p>Description:</strong> ' +
+        c + '</span><br /><p><strong>Address:</strong> ' +
+        d + "<br /><strong>Phone Number:</strong> " +
+        e + "<br /><strong>Homepage:</strong> <a href='#'>" +
+        f + "</a><br /><strong>Checkins:</strong> " +
+        g + "</p></div></div>");
+
     },
 
     generateMarkers: function (n, map){
-        contentString = $('<div><div><span><h4>' +
-        model.locations()[n].name + '</h4><img src="' +
-        model.locations()[n].photo + '" width=\"100\"" height=\"0\""></h4><br /><strong>Description:</strong> ' +
-        model.locations()[n].description + '</span><br /><p><strong>Address:</strong> ' +
-        model.locations()[n].address + "<br /><strong>Phone Number:</strong> " +
-        model.locations()[n].phonenumber + "<br /><strong>Homepage:</strong> " +
-        model.locations()[n].url + "<br /><strong>Checkins:</strong> " +
-        // model.locations()[n].twitter + "<br />Checkins: " +
-        model.locations()[n].checkins +
-        "</p></div></div>");
+        var model_locs = model.locations()[n];
+
+        contentString = controller.createContent_String(
+            model_locs.photo, model_locs.name, model_locs.description,
+            model_locs.address, model_locs.phonenumber, model_locs.url, model_locs.checkins
+        );
 
         //Create an infoWindow
         infoWindow = new google.maps.InfoWindow({content: contentString[0]});
 
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(model.locations()[n].long, model.locations()[n].lat),
+            animation: google.maps.Animation.DROP,
             map: map,
             info: contentString[0]
         });
-        //set the content of infoWindow
-        infoWindow.setContent( marker.info );
 
-        //add click event listener to marker which will open infoWindow
+        marker.addListener('click', toggleBounce);
+
+        // set the content of infoWindow
+        infoWindow.setContent(marker.info);
+
+        function toggleBounce() {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            setTimeout(function () {
+                marker.setAnimation(null);}, 700);
+        }
+
+        // add click event listener to marker which will open infoWindow
         google.maps.event.addListener(marker, 'click', function() {
             infoWindow.setContent(this.info);
             infoWindow.open(map, this);
         });
+
+        controller.update_Locations_info(n, {marker: marker});
+
+        // model.markers.push(marker);
     },
 
     secondAjaxcall: function (i, v_id) {
-            // Ajax call for venue Venue Info
+        // Ajax call for venue Venue Info
         var self = this;
 
         map = new google.maps.Map(document.getElementById('map'), {
@@ -210,17 +303,10 @@ var controller = {
               type: "GET",
               dataType: "jsonp",
               url: "https://api.foursquare.com/v2/venues/" + v_id + "?oauth_token=X0ZIFSKLDPONPOQ3EMQLQFZDNYM1IMOAYUMWFDMXHE1ZCIVQ&v=20160529",
+              error: function () {
+                alert("There was an error receiving the API.");
+              },
               success: function(data) {
-                // console.log("I made it!");
-
-                // console.log(data.response.venue.name);
-                // console.log(data.response.venue.contact.formattedPhone);
-                // console.log(data.response.venue.location.formattedAddress[0] + " " + data.response.venue.location.formattedAddress[1]);
-                // console.log(data.response.venue.stats.checkinsCount);
-                // console.log(data.response.venue.url);
-                // console.log("@" + data.response.venue.contact.twitter);
-
-
                 var ven_name = data.response.venue.name;
                 var ven_phone = data.response.venue.contact.formattedPhone;
                 var ven_address = data.response.venue.location.formattedAddress[0] + " " + data.response.venue.location.formattedAddress[1];
@@ -228,9 +314,24 @@ var controller = {
                 var ven_twitter = "@" + data.response.venue.contact.twitter;
                 var ven_checkins = data.response.venue.stats.checkinsCount;
 
-                // console.log(data.response.venue.photos.groups[0].items[0].prefix);
-                var photo_url = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix;
+                var photo_url = []
+                photo_url[0] = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix;
 
+                var new_photos = []
+                new_photos.push(data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix);
+                // new_photos.push(data.response.venue.photos.groups[0].items[1].prefix + "240x240" + data.response.venue.photos.groups[0].items[1].suffix);
+                // new_photos.push(data.response.venue.photos.groups[0].items[2].prefix + "240x240" + data.response.venue.photos.groups[0].items[2].suffix);
+                // new_photos.push(data.response.venue.photos.groups[0].items[3].prefix + "240x240" + data.response.venue.photos.groups[0].items[3].suffix);
+                // new_photos.push(data.response.venue.photos.groups[0].items[4].prefix + "240x240" + data.response.venue.photos.groups[0].items[4].suffix);
+                // new_photos.push(data.response.venue.photos.groups[0].items[5].prefix + "240x240" + data.response.venue.photos.groups[0].items[5].suffix);
+
+                console.log("The new photos are this many: " + new_photos.length);
+
+                // console.log(photo_url[1]);
+                // photo_url[2] = data.response.venue.photos.groups[0].items[2].prefix + "240x240" + data.response.venue.photos.groups[0].items[2].suffix;
+                // photo_url[3] = data.response.venue.photos.groups[0].items[3].prefix + "240x240" + data.response.venue.photos.groups[0].items[3].suffix;
+
+                // Create object template
                 var repl_object = {
                     name: ven_name,
                     photo: photo_url,
@@ -241,11 +342,11 @@ var controller = {
                     checkins: ven_checkins,
                 };
 
-                console.log(repl_object);
-                // console.log(key);
+                // // console.log(key);
                 self.update_Locations_info(key, repl_object);
                 // controller.sayHello();
 
+                // Create Markers
                 self.generateMarkers(key, map);
               }
             });
@@ -268,23 +369,18 @@ var controller = {
                     dataType: "jsonp",
                     // data: model.locations[i],
                     url: "https://api.foursquare.com/v2/venues/search?ll=" + model.locations()[key].long + "," + model.locations()[key].lat + "&oauth_token=X0ZIFSKLDPONPOQ3EMQLQFZDNYM1IMOAYUMWFDMXHE1ZCIVQ&v=20160529",
+                    error: function () {
+                        alert("There was an error receiving the API.");
+                    },
                     success: function(data) {
+                        // console.log(data);
                         this_venue_id = data.response.venues[0].id;
-                        // model.locations()[key].venue_id = this_venue_id;
-                        // console.log(this_venue_id);
-                        // console.log(model.locations[key].name);
-                        // console.log("Name: " model.locations()[key].name + ", Long: " + model.locations()[key].long + ", " + ", Lat: " + model.locations()[key].lat);
 
-                        // console.log("Venue Name: " + data.response.venues[0].name);
-                        // console.log("Longitude: " +  model.locations()[key].long + " Latitude: " + model.locations()[key].lat);
-                        // console.log("ID: " + this_venue_id);
-
+                        // Update item venue id
                         self.update_Locations_info(key, {venue_id: this_venue_id});
 
-                        // console.log(model.locations()[key].venue_id);
-
+                        // Call API request for each venue details
                         self.secondAjaxcall(key, this_venue_id);
-
                     }
                 });
             })(i);
@@ -292,19 +388,5 @@ var controller = {
     }
 };
 
-
-// ** -- VIEW -- ** //
-
-// var view1 = {
-//     init: function () {
-//         this.render();
-//     },
-
-//     render: function () {
-
-//     }
-// };
-
 // make it go!
-
 controller.init();

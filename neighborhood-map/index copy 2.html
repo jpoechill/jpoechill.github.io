@@ -18,10 +18,7 @@
     </style>
     <link rel="stylesheet" href="css/simple-sidebar.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/d499a08083.js"></script>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 <body>
 
@@ -33,42 +30,24 @@
                 <li class="sidebar-brand">
                     <a href="#"><strong data-bind="text: app_name"></strong></a>
                 </li>
-                <li>
                     <div class="input-group">
-                    <input type="text" class="form-control" id="appendedInput" placeholder="Search..." data-bind="">
-                    <span class="input-group-btn btn-group">
-                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></span> </button>
-                    <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
-                      <li>
-                        <a href="#" data-bind="click: controller.sortItems_byname, enable: locations().length > 1">Name</a>
-                      </li>
-                      <li>
-                        <a href="#" data-bind="click: controller.sortItems_byname, enable: locations().length > 1">Checkins</a>
-                      </li>
-                    </ul>
-                    </span></div>
+                        <input type="text" class="form-control input-group" placeholder="Search..." data-bind="value: query, valueUpdate: 'keyup'" autocomplete="off">
+                        <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" data-bind="click: controller.sortItems_byname, enable: locations().length > 1"><span class="glyphicon glyphicon-filter"></span></button>
+                        </span>
+                    </div>
                 </li>
-
-
                 <!-- ko foreach: locations -->
                 <li>
-                    <a href="#" data-bind="text: name, value: id, click: controller.sayHello"></a>
+                    <a href="#" data-bind="text: name, value: markerid, click: controller.sayHello"></a>
                 </li>
                 <!-- /ko -->
-
-                <!-- ko foreach: locations -->
                 <li>
-                    <a href="#" data-bind="text: name, value: id, click: controller.sayHello"></a>
-                </li>
-                <!-- /ko -->
-
-                <!--
-                <li>
-                    <a href="#" data-bind="value: id, click: controller.sayHello">Google API</a>
+                    <a href="#">Google API</a>
                 </li>
                 <li>
-                    <a href="#" data-bind="click: controller.fireAll">Foursquare API</a>
-                </li> -->
+                    <a href="#">Foursquare API</a>
+                </li>
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
