@@ -5,10 +5,10 @@ This is a web app that displays information about local movie theaters in the Oa
 
 Instructions:
 1. Open index.html in your browser of choice.
-2. Explore to your heart's desire.
+2. Explore to your complete content.
 
 Technicals:
-This is a web app made for the Udacity FrontEnd Web Developer Nanodegree final project. Frameworks and APIS that have been integrated include Knockout.JS, Foursquare, jQuery, Bootstrap, and Google Maps.
+This is a web app made for the Udacity FrontEnd Web Developer Nanodegree (Project 9, second to last). Frameworks and APIS that have been integrated include Knockout.JS, Foursquare, jQuery, Bootstrap, and Google Maps.
 
 Author: @jPoechill
 June 2016

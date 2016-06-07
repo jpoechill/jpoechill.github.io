@@ -3,7 +3,7 @@ html, body {
     height: 100%;
     margin: 0px;
     padding: 0px;
-    background-color: darkgray;
+    background-color: blue;
 }
 #map {
     height: 90%;
@@ -17,9 +17,6 @@ html, body {
     height:200px;
 }
 
-p.big {
-    line-height: 40%;
-}
 
 /*
 li {

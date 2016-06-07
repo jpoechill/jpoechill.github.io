@@ -1,4 +1,3 @@
-<!-- Html for Cat clicker index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,26 +15,12 @@
 
   <div id="sidebar-wrapper" class="content">
             <ul class="sidebar-nav">
-                <!-- BEGIN HEADER -->
-                <li class="sidebar-brand">
-                    <a href="#"><strong data-bind="text: app_name"></strong></a>
-                </li>
-                <!-- END HEADER -->
-
                 <!-- BEGIN SEARCH INPUT -->
                 <li>
                     <div class="input-group">
-                    <input type="text" class="form-control" id="appendedInput" placeholder="Search..." data-bind="">
+                    <input type="text" class="form-control" id="appendedInput" placeholder="Search..." data-bind="value: query, valueUpdate: 'keyup'">
                     <span class="input-group-btn btn-group">
                     <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></span> </button>
-                    <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
-                      <li>
-                        <a href="#" data-bind="click: controller.sortItems_byname, enable: locations().length > 1">Name</a>
-                      </li>
-                      <li>
-                        <a href="#" data-bind="click: controller.sortItems_byname, enable: locations().length > 1">Checkins</a>
-                      </li>
-                    </ul>
                     </span></div>
                 </li>
                 <!-- END SEARCH INPUT -->
@@ -45,13 +30,6 @@
                     <a href="#" data-bind="text: name"></a>
                 </li>
                 <!-- /ko -->
-
-                <li>
-                    <a href="#">Google API</a>
-                </li>
-                <li>
-                    <a href="#">Foursquare API</a>
-                </li>
             </ul>
 
   </div>

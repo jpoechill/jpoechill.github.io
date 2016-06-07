@@ -1,13 +1,14 @@
 // Javascript for Cat Clicker App
 var model = {
     id: 1,
-    app_name: ko.observable("Po's Movie Theaters"),
+    app_name: ko.observable("PO's Movie Theaters"),
     sorted: ko.observable(0),
     query: ko.observable(''),
     markers: [],
+    locations_names: ko.observableArray([]),
     locations: ko.observableArray([
         {
-            name: "ABCDEF",
+            name: "",
             id: 0,
             venue_id: "",
             marker: null,
@@ -22,7 +23,7 @@ var model = {
             lat: -122.247356
         },
         {
-            name: "BCDEF",
+            name: "",
             id: 1,
             venue_id: "",
             marker: null,
@@ -37,7 +38,7 @@ var model = {
             lat: -122.250927
         },
         {
-            name: "CDEF",
+            name: "",
             id: 2,
             venue_id: "",
             marker: null,
@@ -52,7 +53,7 @@ var model = {
             lat: -122.267457
         },
         {
-            name: "DEF",
+            name: "",
             id: 3,
             venue_id: "",
             marker: null,
@@ -67,7 +68,7 @@ var model = {
             lat: -122.291631
         },
         {
-            name: "EF",
+            name: "",
             id: 4,
             venue_id: "",
             marker: null,
@@ -82,7 +83,7 @@ var model = {
             lat: -122.268523
         },
         {
-            name: "F",
+            name: "",
             id: 5,
             venue_id: "",
             marker: null,
@@ -97,7 +98,7 @@ var model = {
             lat: -122.236023
         },
         {
-            name: "G",
+            name: "",
             id: 6,
             venue_id: "",
             marker: null,
@@ -118,41 +119,50 @@ var model = {
 var controller = {
     init: function () {
         this.setup_jq();
-        // this.sayHello();
 
+        model.query.subscribe(controller.sayHelloAgain);
         ko.applyBindings(model);
     },
 
+    populate_listLocations: function () {
+        for (var location in model.locations()) {
+            model.locations_names.push(model.locations()[location]);
+        }
+    },
+
+    sayHelloAgain: function (value) {
+        model.locations_names.removeAll();
+        // console.log(controller.locations()[0].name);
+
+        for (var location in model.locations()) {
+            console.log("Hello");
+            console.log(location);
+            if (model.locations()[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+            //     // Local observable array
+                model.locations_names.push(model.locations()[location]);
+            }
+        }
+
+        // console.log(value);
+    },
+
     sayHello: function (){
-        console.log("Hello, World" + "!");
-        console.log(this.id);
+        // console.log("Hello, World" + "!");
+        // console.log(this.id);
 
         for (var i = 0; i < model.locations().length; i ++){
             if (i !== this.id){
-                model.locations()[i].marker.setVisible(false);
+                // model.locations()[i].marker.setVisible(false);
             } else {
                 model.locations()[i].marker.setVisible(true);
             }
         }
 
+        console.log("You clicked me!");
         google.maps.event.trigger(model.locations()[this.id].marker, 'click');
     },
 
-    // search: function(value) {
-    //     this = model.locations();
-
-    //     // remove all the current beers, which removes them from the view
-    //     this.locations.removeAll();
-
-    //     for(var x in locations) {
-    //       if(locations[x].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-    //         viewModel.locations.push(locations[x]);
-    //       }
-    //     }
-    // },
-
     fireAll: function (){
-
         for (var i = 0; i < model.locations().length; i ++) {
             google.maps.event.trigger(model.locations()[i].marker, 'click');
         }
@@ -160,13 +170,24 @@ var controller = {
 
     search: function(value) {
         // remove all the current beers, which removes them from the view
-        viewModel.beers.removeAll();
+        controller.locations.removeAll();
 
-        for(var x in beers) {
-          if(beers[x].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-            viewModel.beers.push(beers[x]);
-          }
-        }
+        // if (value == '') return;
+
+        for (var location in model.locations()) {
+            // console.log(model.locations()[location].name);
+
+            // Each location's name to lowercase
+            // console.log(model.locations()[location].name.toLowerCase());
+
+            // Current value of user's input search
+            // console.log(value);
+
+            if (model.locations()[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+                // Local observable array
+                controller.locations.push(model.locations()[location]);
+            }
+        };
     },
 
     setup_jq: function () {
@@ -235,18 +256,19 @@ var controller = {
     },
 
     createContent_String: function (a, b, c, d, e, f, g){
-        photo_with_image = "<img src=" + a +  ' width=\"26\" height=\"26\"> ';
+        photo_with_image = "<img src=" + a +  ' width=\"26\" height=\"26\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
 
-        return contentString = $('<div><div><span><p class= "big"><h4 style="margin-top: 10px; margin-bottom: 0px;">' +
+        contentString = $('<div><div><span><h4 style="margin-top: 0px; margin-bottom: 0px;">' +
         b + "<br />" +
         photo_with_image +
-        '<br /></h4><strong></p>Description:</strong> ' +
+        '<br /><strong></h4>Description:</strong> ' +
         c + '</span><br /><p><strong>Address:</strong> ' +
         d + "<br /><strong>Phone Number:</strong> " +
-        e + "<br /><strong>Homepage:</strong> <a href='#'>" +
-        f + "</a><br /><strong>Checkins:</strong> " +
+        e + "<br /><strong>Homepage:</strong> <a href='" +
+        f + "'>" + f + "</a><br /><strong>Checkins:</strong> " +
         g + "</p></div></div>");
 
+        return contentString;
     },
 
     generateMarkers: function (n, map){
@@ -258,7 +280,7 @@ var controller = {
         );
 
         //Create an infoWindow
-        infoWindow = new google.maps.InfoWindow({content: contentString[0]});
+        infoWindow = new google.maps.InfoWindow({content: contentString[0], maxWidth: 500});
 
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(model.locations()[n].long, model.locations()[n].lat),
@@ -280,6 +302,7 @@ var controller = {
 
         // add click event listener to marker which will open infoWindow
         google.maps.event.addListener(marker, 'click', function() {
+            map.setCenter(marker.getPosition());
             infoWindow.setContent(this.info);
             infoWindow.open(map, this);
         });
@@ -319,17 +342,8 @@ var controller = {
 
                 var new_photos = []
                 new_photos.push(data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix);
-                // new_photos.push(data.response.venue.photos.groups[0].items[1].prefix + "240x240" + data.response.venue.photos.groups[0].items[1].suffix);
-                // new_photos.push(data.response.venue.photos.groups[0].items[2].prefix + "240x240" + data.response.venue.photos.groups[0].items[2].suffix);
-                // new_photos.push(data.response.venue.photos.groups[0].items[3].prefix + "240x240" + data.response.venue.photos.groups[0].items[3].suffix);
-                // new_photos.push(data.response.venue.photos.groups[0].items[4].prefix + "240x240" + data.response.venue.photos.groups[0].items[4].suffix);
-                // new_photos.push(data.response.venue.photos.groups[0].items[5].prefix + "240x240" + data.response.venue.photos.groups[0].items[5].suffix);
 
-                console.log("The new photos are this many: " + new_photos.length);
-
-                // console.log(photo_url[1]);
-                // photo_url[2] = data.response.venue.photos.groups[0].items[2].prefix + "240x240" + data.response.venue.photos.groups[0].items[2].suffix;
-                // photo_url[3] = data.response.venue.photos.groups[0].items[3].prefix + "240x240" + data.response.venue.photos.groups[0].items[3].suffix;
+                // console.log("The new photos are this many: " + new_photos.length);
 
                 // Create object template
                 var repl_object = {
@@ -342,9 +356,9 @@ var controller = {
                     checkins: ven_checkins,
                 };
 
-                // // console.log(key);
                 self.update_Locations_info(key, repl_object);
-                // controller.sayHello();
+
+                model.locations_names.push(model.locations()[key]);
 
                 // Create Markers
                 self.generateMarkers(key, map);

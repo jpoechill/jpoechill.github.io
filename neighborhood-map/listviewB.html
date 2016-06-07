@@ -7,52 +7,16 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://use.fontawesome.com/d499a08083.js"></script>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js" type="text/javascript"></script>
+    <script src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js'></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/1.2.1/knockout-min.js"></script>
+
 </head>
 <body>
 
   <div id="sidebar-wrapper" class="content">
 
-            <ul class="sidebar-nav">
-                <!-- BEGIN HEADER -->
-                <li class="sidebar-brand">
-                    <a href="#"><strong data-bind="text: app_name"></strong></a>
-                </li>
-                <!-- END HEADER -->
-
-                <!-- BEGIN SEARCH INPUT -->
-                <li>
-                    <div class="input-group">
-                    <input type="text" class="form-control" id="appendedInput" placeholder="Search..." data-bind="">
-                    <span class="input-group-btn btn-group">
-                    <button class="btn btn-default dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-filter"></span></span> </button>
-                    <ul class="dropdown-menu pull-right" aria-labelledby="dropdownMenu1">
-                      <li>
-                        <a href="#" data-bind="click: controller.sortItems_byname, enable: locations().length > 1">Name</a>
-                      </li>
-                      <li>
-                        <a href="#" data-bind="click: controller.sortItems_byname, enable: locations().length > 1">Checkins</a>
-                      </li>
-                    </ul>
-                    </span></div>
-                </li>
-                <!-- END SEARCH INPUT -->
-
-                <!-- ko template: {foreach: locations} -->
-                <li>
-                    <a href="#" data-bind="text: name"></a>
-                </li>
-                <!-- /ko -->
-
-                <li>
-                    <a href="#">Google API</a>
-                </li>
-                <li>
-                    <a href="#">Foursquare API</a>
-                </li>
-            </ul>
-
-<!--
     <input placeholder="Search…" data-bind="value: query, valueUpdate: 'keyup'" type="search">
     <ul  data-bind="template: {name:'location', foreach:locations}"></ul>
 
@@ -60,11 +24,26 @@
         <li>
           <a href="#"  data-bind="text: name"></a>
         </li>
-      </script> -->
+      </script>
 
   </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/knockout-3.4.0.js"></script>
+<!--
+  <div id="sidebar-wrapper" class="content">
+
+    <input placeholder="Search…" data-bind="value: query, valueUpdate: 'keyup'" type="search">
+    <ul  data-bind="template: {name:'beer', foreach:beers}"></ul>
+
+      <script type="text/html" id="beer">
+        <li>
+          <a href="#"  data-bind="text: name"></a>
+        </li>
+      </script>
+
+  </div> -->
+
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script> -->
+<!-- <script type="text/javascript" src="js/knockout-3.4.0.js"></script> -->
 <script type="text/javascript" src="js/listview.js"></script>
 </body></html>
