@@ -2,9 +2,11 @@
 
 // ** -- MODEL -- ** //
 var model = {
+    // id: 1,
     app_name: ko.observable("PO's Movie Theaters"),
     sorted: ko.observable(0),
     query: ko.observable(''),
+    markers: [],
     locations_names: ko.observableArray([]),
     locations: ko.observableArray([
         {
@@ -115,42 +117,106 @@ var model = {
     ])
 };
 
+// // var view = {
+//     init: function () {
+
+//     };
+
+//     inputSearch: function (value) {
+//         model.locations_names.removeAll();
+
+//         for (var location in model.locations()) {
+//             // console.log("Hello");
+//             // console.log(location);
+//             if (model.locations()[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+//             // Local observable array
+//                 model.locations_names.push(model.locations()[location]);
+
+//             }
+//         }
+//     },
+
+//     clickListitem: function (){
+//         for (var i = 0; i < model.locations().length; i ++){
+//             if (i !== this.id){
+//                 // model.locations()[i].marker.setVisible(false);
+//             } else {
+//                 model.locations()[i].marker.setVisible(true);
+//             }
+//         }
+
+//         google.maps.event.trigger(model.locations()[this.id].marker, 'click');
+//     },
+
+//     setupJquery: function () {
+//         /*Menu-toggle*/
+//         $("#menu-toggle").click(function(e) {
+//             e.preventDefault();
+//             $("#wrapper").toggleClass("toggled");
+//         });
+//     },
+
+//     sortLocationsbyname: function (){
+//         // Sort by name (alphabetical)
+//         objects_sorted = model.locations_names().sort(
+//             function(a, b){
+//                 var nameA = a.name.toLowerCase();
+//                 var nameB = b.name.toLowerCase();
+
+//                 if (nameA < nameB) {//sort string ascending
+//                     // model.sorted(1);
+//                     return -1;
+//                 }
+//                 if (nameA > nameB) {
+//                     return 1;
+//                     return 0; //default return value (no sorting)
+//                 }
+//         });
+
+//         // Check if already sorted, and reverse if so
+//         if (model.sorted() == 0) {
+//             model.sorted(1);
+//             model.locations_names(objects_sorted);
+//         } else if (model.sorted() == 1) {
+//             model.sorted(0);
+//             model.locations_names(objects_sorted.reverse());
+//         }
+//     },
+
+//     createContentstring: function (a, b, c, d, e, f, g){
+//         photo_with_image = "<img src=" + a +  ' width=\"26\" height=\"26\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
+
+//         contentString = $('<div><div><span><h4 style="margin-top: 0px; margin-bottom: 0px;">' +
+//         b + "<br />" +
+//         photo_with_image +
+//         '<br /><strong></h4>Description:</strong> ' +
+//         c + '</span><br /><p><strong>Address:</strong> ' +
+//         d + "<br /><strong>Phone Number:</strong> " +
+//         e + "<br /><strong>Homepage:</strong> <a href='" +
+//         f + "'>" + f + "</a><br /><strong>Checkins:</strong> " +
+//         g + "</p></div></div>");
+
+//         return contentString;
+//     }
+// // };
 
 // ** -- VIEW -- ** //
 var controller = {
     search: function (value) {
         model.locations_names.removeAll();
 
-        if (value == "") {
-            controller.showallMarkers();
-        } else {
-            controller.removeallMarkers();
-        }
-
         for (var location in model.locations()) {
             if (model.locations()[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
                 // Local observable array
                 model.locations_names.push(model.locations()[location]);
-                // controller.removeallMarkers();
-
-                controller.showthisMarker(model.locations()[location].marker);
+                controller.updateMarkers();
             }
         }
     },
 
-    showthisMarker: function (marker) {
-        marker.setVisible(true);
-    },
-
-    removeallMarkers: function () {
-        for (var marker in model.locations()) {
+    updateMarkers: function () {
+        for (var marker in model.locations_names) {
             model.locations()[marker].marker.setVisible(false);
-        }
-    },
-
-    showallMarkers: function () {
-        for (var marker in model.locations()) {
-            model.locations()[marker].marker.setVisible(true);
         }
     },
 
@@ -306,6 +372,8 @@ var controller = {
         });
 
         controller.update_Locations_info(n, {marker: marker});
+
+        // model.markers.push(marker);
     },
 
     update_Locations_info: function(index, new_attr) {
@@ -390,5 +458,7 @@ var controller = {
     }
 };
 
-// Run it!
+
+
+// make it go!
 controller.init();
