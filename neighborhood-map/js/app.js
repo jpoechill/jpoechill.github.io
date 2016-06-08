@@ -116,8 +116,7 @@ var model = {
     ])
 };
 
-
-// ** -- VIEW -- ** //
+// ** -- VIEW MODEL -- ** //
 
 var controller = {
     search: function (value) {
@@ -254,8 +253,6 @@ var controller = {
 
         return contentString;
     },
-
-// ** -- OCTOPUS -- ** //
 
     init: function () {
         this.setupJquery();

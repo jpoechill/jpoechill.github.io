@@ -2,11 +2,10 @@
 
 // ** -- MODEL -- ** //
 var model = {
-    // id: 1,
+    isToggled: false,
     app_name: ko.observable("PO's Movie Theaters"),
     sorted: ko.observable(0),
     query: ko.observable(''),
-    markers: [],
     locations_names: ko.observableArray([]),
     locations: ko.observableArray([
         {
@@ -117,111 +116,45 @@ var model = {
     ])
 };
 
-var view = {
-    init: function () {
+// ** -- VIEW MODEL -- ** //
 
-    };
-
-    inputSearch: function (value) {
-        model.locations_names.removeAll();
-
-        for (var location in model.locations()) {
-            // console.log("Hello");
-            // console.log(location);
-            if (model.locations()[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-            // Local observable array
-                model.locations_names.push(model.locations()[location]);
-
-            }
-        }
-    },
-
-    clickListitem: function (){
-        for (var i = 0; i < model.locations().length; i ++){
-            if (i !== this.id){
-                // model.locations()[i].marker.setVisible(false);
-            } else {
-                model.locations()[i].marker.setVisible(true);
-            }
-        }
-
-        google.maps.event.trigger(model.locations()[this.id].marker, 'click');
-    },
-
-    setupJquery: function () {
-        /*Menu-toggle*/
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    },
-
-    sortLocationsbyname: function (){
-        // Sort by name (alphabetical)
-        objects_sorted = model.locations_names().sort(
-            function(a, b){
-                var nameA = a.name.toLowerCase();
-                var nameB = b.name.toLowerCase();
-
-                if (nameA < nameB) {//sort string ascending
-                    // model.sorted(1);
-                    return -1;
-                }
-                if (nameA > nameB) {
-                    return 1;
-                    return 0; //default return value (no sorting)
-                }
-        });
-
-        // Check if already sorted, and reverse if so
-        if (model.sorted() == 0) {
-            model.sorted(1);
-            model.locations_names(objects_sorted);
-        } else if (model.sorted() == 1) {
-            model.sorted(0);
-            model.locations_names(objects_sorted.reverse());
-        }
-    },
-
-    createContentstring: function (a, b, c, d, e, f, g){
-        photo_with_image = "<img src=" + a +  ' width=\"26\" height=\"26\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
-
-        contentString = $('<div><div><span><h4 style="margin-top: 0px; margin-bottom: 0px;">' +
-        b + "<br />" +
-        photo_with_image +
-        '<br /><strong></h4>Description:</strong> ' +
-        c + '</span><br /><p><strong>Address:</strong> ' +
-        d + "<br /><strong>Phone Number:</strong> " +
-        e + "<br /><strong>Homepage:</strong> <a href='" +
-        f + "'>" + f + "</a><br /><strong>Checkins:</strong> " +
-        g + "</p></div></div>");
-
-        return contentString;
-    }
-};
-
-// ** -- VIEW -- ** //
 var controller = {
     search: function (value) {
         model.locations_names.removeAll();
+
+        if (value == "") {
+            controller.showallMarkers();
+        } else {
+            controller.removeallMarkers();
+        }
 
         for (var location in model.locations()) {
             if (model.locations()[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
                 // Local observable array
                 model.locations_names.push(model.locations()[location]);
-                controller.updateMarkers();
+                controller.showthisMarker(model.locations()[location].marker);
             }
         }
     },
 
-    updateMarkers: function () {
-        for (var marker in model.locations_names) {
+    showthisMarker: function (marker) {
+        marker.setVisible(true);
+    },
+
+    removeallMarkers: function () {
+        for (var marker in model.locations()) {
             model.locations()[marker].marker.setVisible(false);
         }
     },
 
+    showallMarkers: function () {
+        for (var marker in model.locations()) {
+            model.locations()[marker].marker.setVisible(true);
+        }
+    },
+
     listviewClick: function (){
-        for (var i = 0; i < model.locations().length; i ++){
+        for (var i = 0, len = model.locations().length; i < len; i ++){
             if (i !== this.id){
                 // model.locations()[i].marker.setVisible(false);
             } else {
@@ -233,16 +166,38 @@ var controller = {
     },
 
     fireAll: function (){
-        for (var i = 0; i < model.locations().length; i ++) {
+        for (var i = 0, len = model.locations().length; i < len; i ++) {
             google.maps.event.trigger(model.locations()[i].marker, 'click');
         }
     },
 
+    checkWindowresize: function () {
+        var w = window.outerWidth;
+
+        console.log(w);
+
+        if (w <= 400 && model.isToggled == true) {
+            console.log("Hello, World!");
+
+            $("#wrapper").toggleClass("toggled");
+            model.isToggled == false;
+        } else {
+            model.isToggled = false;
+        }
+    },
+
     setupJquery: function () {
-        /*Menu-toggle*/
+        // Menu toggles
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
+
+            if (model.isToggled == false){
+                model.isToggled = true;
+            } else {
+                model.isToggled = false;
+            }
+
         });
     },
 
@@ -280,21 +235,25 @@ var controller = {
     createContent_String: function (a, b, c, d, e, f, g){
         photo_with_image = "<img src=" + a +  ' width=\"26\" height=\"26\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
 
+        // Check if homepage exists
+        if (f != "No homepage") {
+            f = "<strong>Homepage:</strong> <a href=\'" + f + "\'>" + f + "</a><br />";
+        } else {
+            f = "";
+        }
+
+        // Create full content string
         contentString = $('<div><div><span><h4 style="margin-top: 0px; margin-bottom: 0px;">' +
-        b + "<br />" +
-        photo_with_image +
-        '<br /><strong></h4>Description:</strong> ' +
+        b + "<br />" + photo_with_image + '<br /><strong></h4>Description:</strong> ' +
         c + '</span><br /><p><strong>Address:</strong> ' +
         d + "<br /><strong>Phone Number:</strong> " +
-        e + "<br /><strong>Homepage:</strong> <a href='" +
-        f + "'>" + f + "</a><br /><strong>Checkins:</strong> " +
+        e + "<br />" +
+        f + "<strong>Checkins:</strong> " +
         g + "</p></div></div>");
 
         return contentString;
     },
 
-
-// ** -- OCTOPUS -- ** //
     init: function () {
         this.setupJquery();
         model.query.subscribe(controller.search);
@@ -307,15 +266,18 @@ var controller = {
         var self = this;
 
         // Generate markers for each location
-        for (var i = 0; i < model.locations().length; i++) {
+        for (var i = 0, len = model.locations().length; i < len; i++) {
             var this_venue_id;
+
+            var fsqrRequestTimeout = setTimeout(function() {
+                alert("Could not receive full data from the foursquare. Please refresh and try again.");
+            }, 10000);
 
             // Call ajax for each venue's ID
             (function(key){
                 $.ajax({
                     type: "GET",
                     dataType: "jsonp",
-                    // data: model.locations[i],
                     url: "https://api.foursquare.com/v2/venues/search?ll=" + model.locations()[key].long + "," + model.locations()[key].lat + "&oauth_token=X0ZIFSKLDPONPOQ3EMQLQFZDNYM1IMOAYUMWFDMXHE1ZCIVQ&v=20160529",
                     error: function () {
                         alert("There was an error receiving the API.");
@@ -329,13 +291,16 @@ var controller = {
 
                         // Now make call for this venue's secondary detail
                         self.secondAjaxcall(key, this_venue_id);
+
+                        // Clear time out Request
+                        clearTimeout(fsqrRequestTimeout);
                     }
                 });
             })(i);
         }
     },
 
-    generateMarkers: function (n, map){
+    drawMarkers: function (n, map){
         var model_locs = model.locations()[n];
 
         contentString = controller.createContent_String(
@@ -343,7 +308,7 @@ var controller = {
             model_locs.address, model_locs.phonenumber, model_locs.url, model_locs.checkins
         );
 
-        //Create an infoWindow
+        // Create an infoWindow
         infoWindow = new google.maps.InfoWindow({content: contentString[0], maxWidth: 500});
 
         var marker = new google.maps.Marker({
@@ -355,7 +320,7 @@ var controller = {
 
         marker.addListener('click', toggleBounce);
 
-        // set the content of infoWindow
+        // Set the content of infoWindow
         infoWindow.setContent(marker.info);
 
         function toggleBounce() {
@@ -364,7 +329,7 @@ var controller = {
                 marker.setAnimation(null);}, 700);
         }
 
-        // add click event listener to marker which will open infoWindow
+        // Add click event listener to marker which will open infoWindow
         google.maps.event.addListener(marker, 'click', function() {
             map.setCenter(marker.getPosition());
             infoWindow.setContent(this.info);
@@ -372,8 +337,6 @@ var controller = {
         });
 
         controller.update_Locations_info(n, {marker: marker});
-
-        // model.markers.push(marker);
     },
 
     update_Locations_info: function(index, new_attr) {
@@ -411,6 +374,10 @@ var controller = {
           zoom: 13,
         });
 
+        var fsqrRequestTimeout = setTimeout(function() {
+            alert("There was an error receiving the API.");
+        }, 8000);
+
         (function(key){
             $.ajax({
               type: "GET",
@@ -427,13 +394,8 @@ var controller = {
                 var ven_twitter = "@" + data.response.venue.contact.twitter;
                 var ven_checkins = data.response.venue.stats.checkinsCount;
 
-                var photo_url = []
+                var photo_url = [];
                 photo_url[0] = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix;
-
-                var new_photos = []
-                new_photos.push(data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix);
-
-                // console.log("The new photos are this many: " + new_photos.length);
 
                 // Create object template
                 var repl_object = {
@@ -451,14 +413,15 @@ var controller = {
                 model.locations_names.push(model.locations()[key]);
 
                 // Create Markers
-                self.generateMarkers(key, map);
+                self.drawMarkers(key, map);
+
+                // Clear time out Request
+                clearTimeout(fsqrRequestTimeout);
               }
             });
         })(i);
     }
 };
 
-
-
-// make it go!
+// Run it!
 controller.init();
