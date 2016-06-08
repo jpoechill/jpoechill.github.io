@@ -2,10 +2,6 @@
 
 // ** -- MODEL -- ** //
 var model = {
-    isToggled: false,
-    app_name: ko.observable("PO's Movie Theaters"),
-    sorted: ko.observable(0),
-    query: ko.observable(''),
     locations_names: ko.observableArray([]),
     locations: ko.observableArray([
         {
@@ -13,13 +9,7 @@ var model = {
             id: 0,
             venue_id: "",
             marker: null,
-            photo: null,
             description: "Beautiful theater with decent movie selection - free popcorn on weekdays!",
-            address: null,
-            phonenumber: "No phone",
-            url: "No homepage",
-            twitter: null,
-            checkins: null,
             long: 37.811539,
             lat: -122.247356
         },
@@ -28,13 +18,7 @@ var model = {
             id: 1,
             venue_id: "",
             marker: null,
-            photo: null,
             description: "Reclining with enough room for people to get by without you budging.",
-            address: null,
-            phonenumber: "No phone",
-            url: "No homepage",
-            twitter: null,
-            checkins: null,
             long: 37.827362,
             lat: -122.250927
         },
@@ -43,75 +27,9 @@ var model = {
             id: 2,
             venue_id: "",
             marker: null,
-            photo: null,
             description: "Fun place to go, grab a snack, and enjoy a comfortable movie experience.",
-            address: null,
-            phonenumber: "No phone",
-            url: "No homepage",
-            twitter: null,
-            checkins: null,
             long: 37.813960,
             lat: -122.267457
-        },
-        {
-            name: "",
-            id: 3,
-            venue_id: "",
-            marker: null,
-            photo: null,
-            description: "Very clean and organized lobby, includes bar separate of candy and popcorn area.",
-            address: null,
-            phonenumber: "No phone",
-            url: "No homepage",
-            twitter: null,
-            checkins: null,
-            long: 37.833407,
-            lat: -122.291631
-        },
-        {
-            name: "",
-            id: 4,
-            venue_id: "",
-            marker: null,
-            photo: null,
-            description: "Elaborate art deco architecture, good occasional history tour of it.",
-            address: null,
-            phonenumber: "No phone",
-            url: "No homepage",
-            twitter: null,
-            checkins: null,
-            long: 37.809874,
-            lat: -122.268523
-        },
-        {
-            name: "",
-            id: 5,
-            venue_id: "",
-            marker: null,
-            photo: null,
-            description: "Large venue with a pretty distinct interior styling. Street parking is a bit sketchy though.",
-            address: null,
-            phonenumber: "No phone",
-            url: "No homepage",
-            twitter: null,
-            checkins: null,
-            long: 37.784373,
-            lat: -122.236023
-        },
-        {
-            name: "",
-            id: 6,
-            venue_id: "",
-            marker: null,
-            photo: null,
-            description: "Theater complex with multiple screens featuring new release films, plush seating & concession stand.",
-            address: null,
-            phonenumber: "No phone",
-            url: "No homepage",
-            twitter: null,
-            checkins: null,
-            long: 37.796034,
-            lat: -122.277372
         }
     ])
 };
@@ -119,117 +37,9 @@ var model = {
 // ** -- VIEW MODEL -- ** //
 
 var controller = {
-    search: function (value) {
-        model.locations_names.removeAll();
-
-        if (value == "") {
-            controller.showallMarkers();
-        } else {
-            controller.removeallMarkers();
-        }
-
-        for (var location in model.locations()) {
-            if (model.locations()[location].name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
-                // Local observable array
-                model.locations_names.push(model.locations()[location]);
-                controller.showthisMarker(model.locations()[location].marker);
-            }
-        }
-    },
 
     showthisMarker: function (marker) {
         marker.setVisible(true);
-    },
-
-    removeallMarkers: function () {
-        for (var marker in model.locations()) {
-            model.locations()[marker].marker.setVisible(false);
-        }
-    },
-
-    showallMarkers: function () {
-        for (var marker in model.locations()) {
-            model.locations()[marker].marker.setVisible(true);
-        }
-    },
-
-    listviewClick: function (){
-        for (var i = 0, len = model.locations().length; i < len; i ++){
-            if (i !== this.id){
-                // model.locations()[i].marker.setVisible(false);
-            } else {
-                model.locations()[i].marker.setVisible(true);
-            }
-        }
-
-        google.maps.event.trigger(model.locations()[this.id].marker, 'click');
-    },
-
-    fireAll: function (){
-        for (var i = 0, len = model.locations().length; i < len; i ++) {
-            google.maps.event.trigger(model.locations()[i].marker, 'click');
-        }
-    },
-
-    checkWindowresize: function () {
-        var w = window.outerWidth;
-
-        console.log(w);
-
-        if (w <= 400 && model.isToggled == true) {
-            console.log("Hello, World!");
-
-            $("#wrapper").toggleClass("toggled");
-            model.isToggled == false;
-        } else {
-            model.isToggled = false;
-        }
-    },
-
-    setupJquery: function () {
-        // Menu toggles
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-
-            if (model.isToggled == false){
-                model.isToggled = true;
-            } else {
-                model.isToggled = false;
-            }
-
-        });
-    },
-
-    sortItems_byname: function (){
-        // Sort by name (alphabetical)
-        objects_sorted = model.locations_names().sort(
-            function(a, b){
-            var nameA = a.name.toLowerCase();
-            var nameB = b.name.toLowerCase();
-
-            console.log("Sorting: " + model.sorted());
-
-            if (nameA < nameB) {//sort string ascending
-                // model.sorted(1);
-                return -1;
-            }
-            if (nameA > nameB) {
-                return 1;
-                return 0; //default return value (no sorting)
-            }
-        });
-
-        // Check if already sorted, and reverse if so
-        if (model.sorted() == 0) {
-            console.log(model.sorted());
-            model.sorted(1);
-            model.locations_names(objects_sorted);
-        } else if (model.sorted() == 1) {
-            console.log(model.sorted());
-            model.sorted(0);
-            model.locations_names(objects_sorted.reverse());
-        }
     },
 
     createContent_String: function (a, b, c, d, e, f, g){
@@ -255,8 +65,6 @@ var controller = {
     },
 
     init: function () {
-        this.setupJquery();
-        model.query.subscribe(controller.search);
         ko.applyBindings(model);
     },
 
