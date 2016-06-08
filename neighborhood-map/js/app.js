@@ -13,7 +13,7 @@ var model = {
             id: 0,
             venue_id: "",
             marker: null,
-            photo: null,
+            photos: null,
             description: "Beautiful theater with decent movie selection - free popcorn on weekdays!",
             address: null,
             phonenumber: "No phone",
@@ -28,7 +28,7 @@ var model = {
             id: 1,
             venue_id: "",
             marker: null,
-            photo: null,
+            photos: null,
             description: "Reclining with enough room for people to get by without you budging.",
             address: null,
             phonenumber: "No phone",
@@ -43,7 +43,7 @@ var model = {
             id: 2,
             venue_id: "",
             marker: null,
-            photo: null,
+            photos: null,
             description: "Fun place to go, grab a snack, and enjoy a comfortable movie experience.",
             address: null,
             phonenumber: "No phone",
@@ -58,7 +58,7 @@ var model = {
             id: 3,
             venue_id: "",
             marker: null,
-            photo: null,
+            photos: null,
             description: "Very clean and organized lobby, includes bar separate of candy and popcorn area.",
             address: null,
             phonenumber: "No phone",
@@ -73,7 +73,7 @@ var model = {
             id: 4,
             venue_id: "",
             marker: null,
-            photo: null,
+            photos: null,
             description: "Elaborate art deco architecture, good occasional history tour of it.",
             address: null,
             phonenumber: "No phone",
@@ -88,7 +88,7 @@ var model = {
             id: 5,
             venue_id: "",
             marker: null,
-            photo: null,
+            photos: null,
             description: "Large venue with a pretty distinct interior styling. Street parking is a bit sketchy though.",
             address: null,
             phonenumber: "No phone",
@@ -103,7 +103,7 @@ var model = {
             id: 6,
             venue_id: "",
             marker: null,
-            photo: null,
+            photos: null,
             description: "Theater complex with multiple screens featuring new release films, plush seating & concession stand.",
             address: null,
             phonenumber: "No phone",
@@ -151,6 +151,10 @@ var controller = {
         for (var marker in model.locations()) {
             model.locations()[marker].marker.setVisible(true);
         }
+    },
+
+    showInfo: function () {
+
     },
 
     listviewClick: function (){
@@ -203,7 +207,7 @@ var controller = {
 
     sortItems_byname: function (){
         // Sort by name (alphabetical)
-        objects_sorted = model.locations_names().sort(
+        var objects_sorted = model.locations_names().sort(
             function(a, b){
             var nameA = a.name.toLowerCase();
             var nameB = b.name.toLowerCase();
@@ -232,8 +236,15 @@ var controller = {
         }
     },
 
-    createContent_String: function (a, b, c, d, e, f, g){
-        photo_with_image = "<img src=" + a +  ' width=\"26\" height=\"26\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
+    createContent_String: function (a, b, c, d, e, f, g, h){
+        var photos_markup = "";
+
+        for (var i in a) {
+            photos_markup = photos_markup + "<img src=" + i +  ' width=\"100\" height=\"100\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
+        }
+
+        a = "<img src=" + a +  ' width=\"100\" height=\"100\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
+
 
         // Check if homepage exists
         if (f != "No homepage") {
@@ -244,12 +255,13 @@ var controller = {
 
         // Create full content string
         contentString = $('<div><div><span><h4 style="margin-top: 0px; margin-bottom: 0px;">' +
-        b + "<br />" + photo_with_image + '<br /><strong></h4>Description:</strong> ' +
+        b + "<br />" + a + '<br /><strong></h4>Description:</strong> ' +
         c + '</span><br /><p><strong>Address:</strong> ' +
         d + "<br /><strong>Phone Number:</strong> " +
         e + "<br />" +
-        f + "<strong>Checkins:</strong> " +
-        g + "</p></div></div>");
+        f + "<strong>More Details:</strong> <a href=\"https://foursquare.com/venue/\"" +
+        g + "\">https://foursquare.com/venue/" + g +"</a><br /><strong>Checkins:</strong> " +
+        h + "</p></div></div>");
 
         return contentString;
     },
@@ -260,6 +272,7 @@ var controller = {
         ko.applyBindings(model);
     },
 
+    // Set up map
     initMap: function () {
         var map;
         var infowindow = [];
@@ -268,10 +281,6 @@ var controller = {
         // Generate markers for each location
         for (var i = 0, len = model.locations().length; i < len; i++) {
             var this_venue_id;
-
-            var fsqrRequestTimeout = setTimeout(function() {
-                alert("Could not receive full data from the foursquare. Please refresh and try again.");
-            }, 10000);
 
             // Call ajax for each venue's ID
             (function(key){
@@ -291,9 +300,6 @@ var controller = {
 
                         // Now make call for this venue's secondary detail
                         self.secondAjaxcall(key, this_venue_id);
-
-                        // Clear time out Request
-                        clearTimeout(fsqrRequestTimeout);
                     }
                 });
             })(i);
@@ -304,8 +310,8 @@ var controller = {
         var model_locs = model.locations()[n];
 
         contentString = controller.createContent_String(
-            model_locs.photo, model_locs.name, model_locs.description,
-            model_locs.address, model_locs.phonenumber, model_locs.url, model_locs.checkins
+            model_locs.photos, model_locs.name, model_locs.description, model_locs.address,
+            model_locs.phonenumber, model_locs.url, model_locs.venue_id, model_locs.checkins
         );
 
         // Create an infoWindow
@@ -374,10 +380,6 @@ var controller = {
           zoom: 13,
         });
 
-        var fsqrRequestTimeout = setTimeout(function() {
-            alert("There was an error receiving the API.");
-        }, 8000);
-
         (function(key){
             $.ajax({
               type: "GET",
@@ -394,13 +396,13 @@ var controller = {
                 var ven_twitter = "@" + data.response.venue.contact.twitter;
                 var ven_checkins = data.response.venue.stats.checkinsCount;
 
-                var photo_url = [];
-                photo_url[0] = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix;
+                // var photo_url = [];
+                var photo_url = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix;
 
                 // Create object template
                 var repl_object = {
                     name: ven_name,
-                    photo: photo_url,
+                    photos: photo_url,
                     address: ven_address,
                     phonenumber: ven_phone,
                     url: data.response.venue.url,
@@ -414,9 +416,6 @@ var controller = {
 
                 // Create Markers
                 self.drawMarkers(key, map);
-
-                // Clear time out Request
-                clearTimeout(fsqrRequestTimeout);
               }
             });
         })(i);
