@@ -240,10 +240,10 @@ var controller = {
         var photos_markup = "";
 
         for (var i in a) {
-            photos_markup = photos_markup + "<img src=" + i +  ' width=\"100\" height=\"100\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
+            photos_markup = photos_markup + "<img src=" + a[i] +  ' width=\"96\" height=\"96\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
         }
 
-        a = "<img src=" + a +  ' width=\"100\" height=\"100\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
+        // a = "<img src=" + a +  ' width=\"100\" height=\"100\" style=\"margin-top:4px; margin-bottom:2px;\"> ';
 
 
         // Check if homepage exists
@@ -255,11 +255,11 @@ var controller = {
 
         // Create full content string
         contentString = $('<div><div><span><h4 style="margin-top: 0px; margin-bottom: 0px;">' +
-        b + "<br />" + a + '<br /><strong></h4>Description:</strong> ' +
+        b + "<br />" + photos_markup + '<br /><strong></h4>Description:</strong> ' +
         c + '</span><br /><p><strong>Address:</strong> ' +
         d + "<br /><strong>Phone Number:</strong> " +
         e + "<br />" +
-        f + "<strong>More Details:</strong> <a href=\"https://foursquare.com/venue/\"" +
+        f + "<strong>More Details:</strong> <a href=\"https://foursquare.com/venue/" +
         g + "\">https://foursquare.com/venue/" + g +"</a><br /><strong>Checkins:</strong> " +
         h + "</p></div></div>");
 
@@ -292,6 +292,7 @@ var controller = {
                         alert("There was an error receiving the API.");
                     },
                     success: function(data) {
+                        // console.log(data);
                         // Grab venue ID for this lat/long
                         this_venue_id = data.response.venues[0].id;
 
@@ -399,10 +400,43 @@ var controller = {
                 // var photo_url = [];
                 var photo_url = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix;
 
+                var first_photo = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[0].suffix;
+                var second_photo = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[1].suffix;
+                var third_photo = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[2].suffix;
+                // var fourth_photo = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[3].suffix;
+                // var fifth_photo = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[4].suffix;
+
+                var photo_urls = [];
+                var get_photo;
+
+                photo_count = data.response.venue.photos.count;
+                if (photo_count > 5) {
+                    photo_count = 5;
+                }
+                console.log(photo_count);
+
+                for (var i = 0; i < photo_count; i++) {
+                    get_photo = data.response.venue.photos.groups[0].items[0].prefix + "240x240" + data.response.venue.photos.groups[0].items[i].suffix;
+                    photo_urls.push(get_photo);
+                }
+
+
+                // photo_urls[0] = first_photo;
+                // photo_urls[1] = second_photo;
+                // photo_urls[2] = third_photo;
+                // photo_urls[3] = fourth_photo;
+                // photo_urls[4] = fifth_photo;
+
+                // for (i in photo_urls) {
+                //     if (photo[i] == null) {
+                //         photo_urls.splice(i, 1);
+                //     }
+                // }
+
                 // Create object template
                 var repl_object = {
                     name: ven_name,
-                    photos: photo_url,
+                    photos: photo_urls,
                     address: ven_address,
                     phonenumber: ven_phone,
                     url: data.response.venue.url,
