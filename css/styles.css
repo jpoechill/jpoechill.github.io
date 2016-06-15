@@ -1,7 +1,8 @@
 /* Custom style sheet */
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 
-html, body {
+html,
+body {
   font-color: red;
   background: url("../images/unsplash_grass.jpg") fixed;
   -webkit-background-size: cover;
@@ -112,10 +113,25 @@ html, body {
   font-size: small;
 }
 
-dl dt, dd {
+div.row {
+  margin-top: 4px;
+}
+
+/* i {
+  font-weight: lighter;
+} */
+
+dl
+dt,
+dd {
   font-weight: normal;
   text-align: left;
   color: #696969;
+}
+
+ul,
+li {
+ list-style: none;
 }
 
 /* Footer */
