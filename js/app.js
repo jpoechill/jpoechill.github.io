@@ -123,9 +123,28 @@ function fetchLastPlayed () {
             var trackname_02 = hash.recenttracks.track[2].name;
             var imgsrc_02 = hash.recenttracks.track[2].image[1]['#text'];
 
+            if (imgsrc_00 == "") {
+                imgsrc_00 = "img/spotify_icn.png";
+                console.log("Ooga-boogas");
+            }
+
+            if (imgsrc_01 == "") {
+                imgsrc_01 = "img/spotify_icn.png";
+                console.log("Ooga-boogas");
+            }
+
+            if (imgsrc_02 == "") {
+                imgsrc_02 = "img/spotify_icn.png";
+                console.log("Ooga-boogas");
+            }
+
             document.getElementById("img_00").src = imgsrc_00;
             document.getElementById("img_01").src = imgsrc_01;
             document.getElementById("img_02").src = imgsrc_02;
+
+            console.log(document.getElementById("img_00").src);
+            console.log(document.getElementById("img_01").src);
+            console.log(document.getElementById("img_02").src);
 
             document.getElementById("spotifyLastPlayed_00").innerHTML = trackname_00 + " - " + artist_00;
             document.getElementById("spotifyLastPlayedAgo_00").innerHTML = nowPlayingText_00;
