@@ -1,6 +1,6 @@
 // JS doc for Last.fm Last Played APP
 // API Key for Last.fm: f75fa33bf6e6d5376902a6748a4ace69
-
+// Test link: https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=jpoechill&api_key=f75fa33bf6e6d5376902a6748a4ace69&format=json
 function fetchLastPlayed () {
     var user = "jpoechill";
     var API_Key = "f75fa33bf6e6d5376902a6748a4ace69";
