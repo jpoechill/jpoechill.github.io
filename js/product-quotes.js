@@ -17,8 +17,10 @@ var quotesJSON = [
   //   quote: "Design is shrinking the gap between what a product does and why it exists.",
   //   author: "Sahil Lavingia, Founder/CEO via. Gumroad"
   // },
+  {
     quote: "Keep dancing.",
     author: "Eric Elliot, Javascript Guru & Writer"
+  }
 ];
 
 // Generate random number between min and max quote count
