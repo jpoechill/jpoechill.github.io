@@ -1,6 +1,7 @@
 // JS doc for Last.fm Last Played APP
 // API Key for Last.fm: f75fa33bf6e6d5376902a6748a4ace69
 // Test link: https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=jpoechill&api_key=f75fa33bf6e6d5376902a6748a4ace69&format=json
+
 function fetchLastPlayed () {
     var user = "jpoechill";
     var API_Key = "f75fa33bf6e6d5376902a6748a4ace69";
@@ -152,34 +153,12 @@ function fetchLastPlayed () {
             document.getElementById("spotifyLastPlayedAgo_01").innerHTML = nowPlayingText_01;
             document.getElementById("spotifyLastPlayed_02").innerHTML = trackname_02 + " - " + artist_02;
             document.getElementById("spotifyLastPlayedAgo_02").innerHTML = nowPlayingText_02;
-
-            // console.log(hash.recenttracks.track[0].artist['#text']);
-            // console.log(hash.recenttracks.track[0].name);
-            // console.log(data.recenttracks.track[1]);
-            // console.log(data.recenttracks.track[2]);
         },
     });
 }
 
 
-// function init() {
-//     fetchIp();
-// }
-
-function sayHello() {
-    console.log("Hello, World!");
-}
-
-// document.getElementById("spotifyLastPlayed").innerHTML = "Ooga-boogas";
-
-// console.log("Hello, World!");
-
-
 $(document).ready(function(){
-    // sayHello();
 
     fetchLastPlayed();
-
-    // document.getElementById("spotifyLastPlayed").innerHTML = "Ooga-boogas";
-
 });

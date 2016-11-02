@@ -5,12 +5,6 @@
   <meta charset="UTF-8">
   <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
   <title>Po Rith – Home</title>
-  <link rel="shortcut icon" href="img/apple-icon-72x72.png"/>
-
-  <!-- Start Angular -->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
-  <!-- End Angular -->
 
   <!-- jQuery -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -187,7 +181,7 @@
       <div class="row" >
           <div class="col-md-12">
             <div class="main-body">
-              <!-- <div class="col-md-3">
+              <div class="col-md-3">
                 <p class="image-title">Algorithm Tracker</p>
                 <div id="img-rounded-corners">
                   <a href="https://jpoechill.github.io/compu-algorithms/"><img src="img/myalgorithms.png" width="100%" height="100%"></a>
@@ -201,21 +195,6 @@
                       <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
                     </ul>
                 </p>
-              </div> -->
-              <div class="col-md-3">
-                <p class="image-title">Random Quote Machine</p>
-                <div id="img-rounded-corners">
-                  <a href="http://s.codepen.io/jpoechill/debug/YWELoq"><img src="img/designquote_ss.png" width="100%" height="100%"></a>
-                </div>
-                <p class="main-title-description">A simple web app that fetches and displays a random design quote at request. Features  the ability to share quotes onto social media platforms, ie. Twitter.</p>
-                  <p class="main-title-description"><a href="http://s.codepen.io/jpoechill/debug/YWELoq" style="color: #000000;">View Demo...</a><br><a href="http://codepen.io/jpoechill/pen/YWELoq" style="color: #000000;">View on CodePen...</a></p>
-                  <p class="">
-                    <ul class="tags">
-                      <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Design Quotes API</a></li>
-                    </ul>
-                  </p>
               </div>
               <div class="col-md-3">
                 <p class="image-title">Tribute Page</p>
@@ -232,6 +211,21 @@
                   </ul>
                 </p>
               </div>
+              <!-- <div class="col-md-3">
+                <p class="image-title">Random Quote Machine</p>
+                <div id="img-rounded-corners">
+                  <a href="http://s.codepen.io/jpoechill/debug/YWELoq"><img src="img/designquote_ss.png" width="100%" height="100%"></a>
+                </div>
+                <p class="main-title-description">A web app that fetches and displays a random design quote at request. Features  the ability to share quotes onto social media platforms, ie. Twitter.</p>
+                  <p class="main-title-description"><a href="http://s.codepen.io/jpoechill/debug/YWELoq" style="color: #000000;">View Demo...</a><br><a href="http://codepen.io/jpoechill/pen/YWELoq" style="color: #000000;">View on CodePen...</a></p>
+                  <p class="">
+                    <ul class="tags">
+                      <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Design Quotes API</a></li>
+                    </ul>
+                  </p>
+              </div> -->
               <div class="col-md-3">
                 <p class="image-title">Frogger Arcade Clone</p>
                 <div id="img-rounded-corners">
@@ -264,6 +258,74 @@
             </div>
           </div>
       </div>
+      <!-- <div class="row">
+        <div class="col-md-12">
+          <div class="main-body">
+            <div class="col-md-3">
+              <p class="image-title">Toy City I, II, III, IV</p>
+              <div id="img-rounded-corners">
+                <a href="https://github.com/jpoechill/rbnd-toycity-part4"><img src="img/ruby_ss.png" width="100%" height="100%"></a>
+              </div>
+              <p class="main-title-description">A 4 part, interactive inventory managment system for a fictional toy store, Toy City. Some functionalities include creating, updating, and deleting inventory. Also has the ability to create specialized reports per inventoried item in list.</p>
+                <p class="main-title-description">
+                <a href="https://github.com/jpoechill/rbnd-toycity-part1" style="color: #000000;">View Part I, II on Github...</a><br>
+                <a href="https://github.com/jpoechill/rbnd-toycity-part3" style="color: #000000;">View Part III, IV on Github...</a><br>
+              <p class="">
+                  <ul class="tags">
+                    <li><a href="#" onClick="return false;" class="tag">Ruby</a></li>
+                    <li><a href="#" onClick="return false;" class="tag">MiniTest</a></li>
+                  </ul>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p class="image-title">Survivr I, II</p>
+              <div id="img-rounded-corners">
+                <a href="https://github.com/jpoechill/rbnd-survivr-part2"><img src="img/survivr.png" width="100%" height="100%"></a>
+              </div>
+              <p class="main-title-description">A 2 part, interactive simulation game of the popular television series, Survivor. Two teams are randomly generated from a list of contestants, where-as multiple trials and challenges are performed, elminating players until a final victor is reached.</p>
+                <p class="main-title-description">
+                <a href="https://github.com/jpoechill/rbnd-survivr-part1" style="color: #000000;">View Part I on Github...</a><br>
+                <a href="https://github.com/jpoechill/rbnd-survivr-part2" style="color: #000000;">View Part II on Github...</a></p>
+              <p class="">
+                  <ul class="tags">
+                    <li><a href="#" onClick="return false;" class="tag">Ruby</a></li>
+                    <li><a href="#" onClick="return false;" class="tag">MiniTest</a></li>
+                    <li><a href="#" onClick="return false;" class="tag">Ruby Gems</a></li>
+                  </ul>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p class="image-title">Colorizr</p>
+              <div id="img-rounded-corners">
+                <a href="https://github.com/jpoechill/colorizr"><img src="img/colorizr.png" width="100%" height="100%"></a>
+              </div>
+              <p class="main-title-description">A simple Ruby gem that colorizes selected text for Ruby applications.</p>
+                <p class="main-title-description">
+                <a href="https://github.com/jpoechill/colorizr" style="color: #000000;">View on Github...</a></p>
+              <p class="">
+                  <ul class="tags">
+                    <li><a href="#" onClick="return false;" class="tag">Ruby</a></li>
+                    <li><a href="#" onClick="return false;" class="tag">Ruby Gems</a></li>
+                  </ul>
+              </p>
+            </div>
+            <div class="col-md-3">
+              <p class="image-title">Udacitask I, II</p>
+              <div id="img-rounded-corners">
+                <a href="https://github.com/jpoechill/rbnd-udacitask-part2"><img src="img/udacitask.png" width="100%" height="100%"></a>
+              </div>
+              <p class="main-title-description">A 2 part, Ruby application that sets up and organizes tasks as created. Features include multiples item types, prioritizing, and creating, editing, and deleting entries.</p>
+                <p class="main-title-description">
+                <a href="https://github.com/jpoechill/rbnd-udacitask-part1" style="color: #000000;">View Part I on Github...</a><br>
+                <a href="https://github.com/jpoechill/rbnd-udacitask-part2" style="color: #000000;">View Part II on Github...</a></p>
+              <p class="">
+                  <ul class="tags">
+                    <li><a href="#" onClick="return false;" class="tag">Ruby</a></li>
+                  </ul>
+            </div>
+          </div>
+        </div>
+      </div> -->
     </div>
   </div>
 
@@ -310,6 +372,7 @@
                   </p>
                 </div>
               </form>
+
             </div>
           </div>
       </div>
@@ -373,12 +436,13 @@
         <div class="col-md-12">
           <div class="footer-body">
             <div class="col-md-7">
+              <!-- thank you for visiting.<br> -->
               <p id="nav-caps"><a href="#about" style="text-decoration: none; color: #000000">ABOUT</a> <a href="#works" style="text-decoration: none; color: #000000">WORK</a> <a href="#contact" style="text-decoration: none; color: #000000">CONTACT</a> | <a href="https://medium.com/@jpoechill/" style="text-decoration: none; color: #000000">BLOG</a></p>
             </div>
             <div class="col-md-5">
               <p id="body-text-copyright">
                 Header photo made with photography by <a href="http://unsplash.com">Unsplash</a>. <br>Website coded by hand, with <i class="fa fa-heart" aria-hidden="true" style="color: darkred; font-size: 12px; margin-left: 2px;"> </i>.<br>
-                Polo Rith © 2016<br>
+                Polo Rith © 2016<!-- </a> --><br> <!-- Copyright © 2016 Rithfolio.com -->
                 </p>
             </div>
           </div>
@@ -387,15 +451,13 @@
     </div>
   </div>
 
-<!-- Start Styles -->
+<!-- Styles -->
 <link rel="stylesheet" type="text/css" href="css/styles.css">
-<!-- End Styles -->
 
-<!-- Start Scripts -->
+<!-- Show last played via. Last.fm API -->
 <script type="text/javascript" src="js/app.js"></script>
 <script type="text/javascript" src="js/twitter-feed.js"></script>
 <script type="text/javascript" src="js/product-quotes.js"></script>
-<!-- End Scripts -->
 
 <!-- Start Instagram Feed -->
 <script type="text/javascript" src="js/instafeed.min.js"></script>
