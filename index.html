@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <!-- <meta name=viewport content="width=device-width, initial-scale=1"> -->
   <title>Po Rith – Home</title>
-  <link rel="shortcut icon" href="img/apple-icon-72x72.png"/>
+  <link rel="shortcut icon" href="img/favicon.png"/>
 
   <!-- Start Angular -->
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
@@ -35,22 +35,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="#" id="caps"><i><strong>[POLO]</i></strong></a>
+                  <!-- <a class="navbar-brand" href="#" id="caps"><i><strong>[POLO]</i></strong></a> -->
                 </div>
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                   <ul class="nav navbar-nav">
-                    <li><a href="#about" id="caps">ABOUT <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#works" id="caps">WORK</a></li>
-                    <li><a href="#contact" id="caps">CONTACT</a></li>
-                    <li><a id="caps"> | </a></li>
-                    <li><a href="https://medium.com/@jpoechill/" id="caps">BLOG</a></li>
-                  </ul>
-                  <ul class="nav navbar-nav navbar-right">
                     <li class="nav-social"><a href="https://twitter.com/jpoechill" target='_blank'><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
                     <li class="nav-social"><a href="https://github.com/jpoechill" target='_blank'><i class="fa fa-github" aria-hidden="true"></i></a></li>
                     <li class="nav-social"><a href="https://codepen.io/jpoechill" target='_blank'><i class="fa fa-codepen" aria-hidden="true"></i></a></li>
                     <li class="nav-social"><a href="https://plus.google.com/+jpoechill" target='_blank'><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
                     <li class="nav-social"><a href="https://facebook.com/poamrong.rith" target='_blank'><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                  </ul>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#about" id="caps">ABOUT <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#works" id="caps">WORK</a></li>
+                    <li><a href="#contact" id="caps">CONTACT</a></li>
+                    <li><a id="caps"> | </a></li>
+                    <li><a href="https://medium.com/@jpoechill/" id="caps">BLOG</a></li>
+                    <li style="padding-top: 0px;"><a href="#" onClick="return false;"><img src="img/avatar.jpg" width="40px" style="border-radius: 40px;" alt="Polo Avatar" /></a></li>
                   </ul>
                 </div>
               </div>
@@ -69,12 +70,19 @@
             <div class="main-body">
               <div class="col-md-12">
                 <p class="caps" style="text-align: center; margin-bottom: 30px;">ABOUT</p>
-                <p id="header-text" style="margin-bottom: 10px;">Hi, I'm Po – and welcome to my GitHub portfolio.</p>
-                <p id="header-body-text">
-                </p>
+                <p id="header-text" style="margin-bottom: 10px;">Hi, I'm Po Rith – and welcome to my GitHub portfolio.</p>
+                <!-- <p id="header-text" style="margin-bottom: 10px;">.</p> -->
+                <!-- <div class="col-md-12" align="center" style="margin-top: 6px;">
+                  <p id="header-body-text" style="display: inline-block; width: 930px;">
+                  I design and code with Sketch, HTML/CSS, and Javascript. <br>
+                  In particular, I specialize in single-page applications with Angular JS 1.x/2. </p>
+                  <p id="header-body-text" style="display: inline-block; width: 930px;">
+                    I currently live and play in Oakland, Ca. Thank you much for visiting :)
+                  </p>
+                </div> -->
                 <div class="col-md-12" align="center" style="margin-top: 6px;">
                   <p id="header-body-text" style="display: inline-block; width: 930px;">
-                  I'm a designer turned developer, currently living in Oakland, California. I made this website as an opportunity to showcase some of my most recent learning and personal development projects. Coming from a background in design and the arts (see <a href="" style="color: #F4F6F6;">drawing</a>), I've been able to take the last year to teach myself how to code. Amid some frustrations and many a nights, I can say that I have gained but a strong understanding of HTML/CSS, Javascript, and of an on-going variety of Javascript frameworks and APIs. </p>
+                  I'm a designer turned developer, currently living in Oakland, California. I made this website as an opportunity to showcase some of my most recent learning and personal projects in web development. Coming from a background in design and the arts (see <a href="" style="color: #F4F6F6;">drawing</a>), I've been able to take the last year to teach myself how to code. Amid some frustrations and many a nights, I can say that I have gained but a strong understanding of HTML/CSS, Javascript, and of an on-going variety of Javascript frameworks and APIs. </p>
                   <p id="header-body-text" style="display: inline-block; width: 930px;">
                     Because this website is a work in progress, please feel free to return and see new projects.
                   </p>
@@ -99,22 +107,55 @@
           <a name="works"></a>
           <div class="main-body">
             <div class="col-md-12">
-              <p id="caps_body" style="text-align: center; margin-bottom: 35px; margin-top: 20px;">FEATURED WORK</p>
+              <p id="caps_body" style="text-align: center; margin-top: 20px;">FEATURED WORK</p>
             </div>
           </div>
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <div class="main-body">
-            <div class="col-md-3">
-              <p class="image-title">Restaurant Reviewer</p>
-              <a href="https://restaurantor.herokuapp.com/"><div id="img-rounded-corners">
-                <img src="img/restaurantor_ss.png" width="100%" height="100%">
-              </div></a>
-              <p class="main-title-description"> A restaurant reviewer app with a primary focus on accessibility for users with special needs. This application is fully functional with screen readers and pays attention to readability and visible color contrasts.</p>
-              <p class="main-title-description"><a href="https://restaurantor.herokuapp.com/" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github...</a></p>
-              <p class="">
+          <div class="main-body" >
+            <div class="col-md-4">
+              <div class="col-md-12 item">
+                <a href="https://restaurantor.herokuapp.com/"><div id="img-rounded-corners">
+                  <img src="img/dashor.png" width="100%" height="100%">
+                </div></a>
+                <p class="image-title">Dashor App</p>
+                <p class="main-title-description"> A single-page application focusing primarily on SOP (separations of concerns), utilizing dashboard applications for a fictional corporate company. Where specific, each dashboard uses external data files and allows query updates in near real-time.</p>
+                <div style="padding-top: 10px;">
+                    <ul class="tags">
+                      <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
+
+                      <li><a href="#" onClick="return false;" class="tag">Chart.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular-Chart.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Leaflet.js</a></li>
+
+                      <li><a href="#" onClick="return false;" class="tag">Smart-table.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Gulp</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular.js</a></li>
+                    </ul>
+                  </div>
+                  <hr>
+                    <div style="display: inline;">
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="https://dashorapp.herokuapp.com/" style="color: #000000;">View Demo</a>
+                      </div>
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github</a></p>
+                      </div>
+                    </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="col-md-12 item">
+                <a href="https://restaurantor.herokuapp.com/"><div id="img-rounded-corners">
+                  <img src="img/restaurantor_ss.png" width="100%" height="100%">
+                </div></a>
+                <p class="image-title">Restaurant Reviewer</p>
+                <p class="main-title-description"> A restaurant reviewer app with a primary focus on accessibility (a11y). This application is fully functional with screen readers and pays attention to focus, functionality, readability. It ultilizes standard ARIA labeling for best screen reader practices.</p>
+                <div style="padding-top: 10px;">
                   <ul class="tags">
                     <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
                     <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
@@ -122,19 +163,29 @@
                     <li><a href="#" onClick="return false;" class="tag">Gulp</a></li>
                     <li><a href="#" onClick="return false;" class="tag">Angular.js</a></li>
                     <li><a href="#" onClick="return false;" class="tag">Firebase API</a></li>
-                    <!-- <li><a href="#" onClick="return false;" class="tag">BART API</a></li> -->
-                    <!-- <li><a href="#" onClick="return false;" class="tag">ServiceWorkers API</a></li> -->
-                    <!-- <li><a href="#" onClick="return false;" class="tag">IndexedDB API</a></li> -->
                   </ul>
+                </div>
+                <hr>
+                <div style="display: inline;">
+                  <div class="col-md-6" style="display: inline;">
+                    <p class="main-title-description" style="padding-top: 0px;"><a href="https://restaurantor.herokuapp.com/" style="color: #000000;">View Demo</a>
+                  </div>
+                  <div class="col-md-6" style="display: inline;">
+                    <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github</a></p>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="col-md-3">
-              <p class="image-title">Transportation App</p>
+            <div class="col-md-4">
+              <div class="col-md-12 item">
               <a href="https://bartor.herokuapp.com/"><div id="img-rounded-corners">
                 <img src="img/bartor.png" width="100%" height="100%">
               </div></a>
+              <p class="image-title">Transportation App</p>
               <p class="main-title-description"> A realtime, Bart schedule tracker that utilizes offline functionality with ServiceWorkers and IndexedDB.</p>
-              <p class="main-title-description"><a href="https://bartor.herokuapp.com/" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github...</a></p>
-              <p class="">
+              <!-- <p class="main-title-description"><a href="https://bartor.herokuapp.com/" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github...</a></p> -->
+              <!-- <p class=""> -->
+              <div style="padding-top: 10px;">
                   <ul class="tags">
                     <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
                     <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
@@ -145,42 +196,18 @@
                     <li><a href="#" onClick="return false;" class="tag">ServiceWorkers API</a></li>
                     <li><a href="#" onClick="return false;" class="tag">IndexedDB API</a></li>
                   </ul>
+                </div>
+                <hr>
+                  <div style="display: inline;">
+                    <div class="col-md-6" style="display: inline;">
+                      <p class="main-title-description" style="padding-top: 0px;"><a href="https://bartor.herokuapp.com/" style="color: #000000;">View Demo</a>
+                    </div>
+                    <div class="col-md-6" style="display: inline;">
+                      <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github</a></p>
+                    </div>
+                  </div>
+                </div>
             </div>
-            <div class="col-md-3"></a>
-              <p class="image-title">Meet-Up Event Planner</p>
-              <div id="img-rounded-corners">
-                <a href="http://jpoechill.github.io/meet-upeventplanner"><img src="img/meetupeventplanner.png" width="100%" height="100%"></a>
-              </div>
-              <p class="main-title-description"> A single page application investigating specific form design, validation, and accessibility. It practices the use of auto-filled forms and location suggestioning. It also utilizes automated build tools to minify and concatenate content to further streamline speed and functionality.</p>
-              <p class="main-title-description"><a href="http://jpoechill.github.io/meet-upeventplanner" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/meet-upeventplanner" style="color: #000000;">View on Github...</a></p>
-              <p class="">
-                  <ul class="tags">
-                    <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Bootstrap Validator</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Gulp.js</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Google Places API</a></li>
-                  </ul>
-            </div>
-            <div class="col-md-3">
-              <p class="image-title">Neighborhood Map</p>
-              <div id="img-rounded-corners">
-                <a href="http://jpoechill.github.io/neighborhood-map"><img src="img/neighborhoodmap_ss.png" width="100%" height="100%"></a>
-              </div>
-              <p class="main-title-description">An interactive neighborhood map that shows the location of local movie theaters in the East Bay Area. Made with the Knockout.js framework and fetches item descriptions and pictures from multiple API references.</p>
-              <p class="main-title-description"><a href="http://jpoechill.github.io/neighborhood-map" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/neighborhood-map" style="color: #000000;">View on Github...</a></p>
-              <p class="">
-                  <ul class="tags">
-                    <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">jQuery</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Knockout.js</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Foursquare API</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Google Maps API</a></li>
-                  </ul>
-            </div>
-
           </div>
         </div>
       </div>
@@ -202,22 +229,98 @@
                     </ul>
                 </p>
               </div> -->
-              <div class="col-md-3">
-                <p class="image-title">Random Quote Machine</p>
-                <div id="img-rounded-corners">
-                  <a href="http://s.codepen.io/jpoechill/debug/YWELoq"><img src="img/designquote_ss.png" width="100%" height="100%"></a>
+
+              <div class="col-md-4">
+                <div class="col-md-12 item">
+                  <div id="img-rounded-corners">
+                    <a href="http://jpoechill.github.io/meet-upeventplanner"><img src="img/meetupeventplanner.png" width="100%" height="100%"></a>
+                  </div>
+                  <p class="image-title">Meet-Up Event Planner</p>
+                  <p class="main-title-description"> A single page application investigating specific form design, validation, and accessibility. It practices the use of auto-filled forms and location suggestioning. It also utilizes automated build tools to minify and concatenate content to further streamline speed and functionality.</p>
+                  <div style="padding-top: 10px;">
+                    <ul class="tags">
+                      <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Bootstrap Validator</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Gulp.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Google Places API</a></li>
+                    </ul>
+                  </div>
+                  <hr>
+                  <div style="display: inline;">
+                    <div class="col-md-6" style="display: inline;">
+                      <p class="main-title-description" style="padding-top: 0px;"><a href="http://jpoechill.github.io/meet-upeventplanner" style="color: #000000;">View Demo</a>
+                    </div>
+                    <div class="col-md-6" style="display: inline;">
+                      <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/meet-upeventplanner" style="color: #000000;">View on Github</a></p>
+                    </div>
+                  </div>
                 </div>
-                <p class="main-title-description">A simple web app that fetches and displays a random design quote at request. Features  the ability to share quotes onto social media platforms, ie. Twitter.</p>
-                  <p class="main-title-description"><a href="http://s.codepen.io/jpoechill/debug/YWELoq" style="color: #000000;">View Demo...</a><br><a href="http://codepen.io/jpoechill/pen/YWELoq" style="color: #000000;">View on CodePen...</a></p>
-                  <p class="">
+              </div>
+              <div class="col-md-4">
+                <div class="col-md-12 item">
+                  <div id="img-rounded-corners">
+                    <a href="http://jpoechill.github.io/neighborhood-map"><img src="img/neighborhoodmap_ss.png" width="100%" height="100%"></a>
+                  </div>
+                  <p class="image-title">Neighborhood Map</p>
+                  <p class="main-title-description">An interactive neighborhood map that shows the location of local movie theaters in the East Bay Area. Made with the Knockout.js framework and fetches item descriptions and pictures from multiple API references.</p>
+                  <div style="padding-top: 10px;">
                     <ul class="tags">
                       <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
                       <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Design Quotes API</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">jQuery</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Knockout.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Foursquare API</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Google Maps API</a></li>
                     </ul>
-                  </p>
+                  </div>
+                  <hr>
+                  <div style="display: inline;">
+                    <div class="col-md-6" style="display: inline;">
+                      <p class="main-title-description" style="padding-top: 0px;"><a href="http://jpoechill.github.io/neighborhood-map" style="color: #000000;">View Demo</a>
+                    </div>
+                    <div class="col-md-6" style="display: inline;">
+                      <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/neighborhood-map" style="color: #000000;">View on Github</a></p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="col-md-3">
+
+              <div class="col-md-4">
+                <div class="col-md-12 item">
+                  <div id="img-rounded-corners">
+                    <a href="http://s.codepen.io/jpoechill/debug/YWELoq"><img src="img/designquote_ss.png" width="100%" height="100%"></a>
+                  </div>
+                  <p class="image-title">Random Quote Machine</p>
+                  <p class="main-title-description">A simple web app that fetches and displays a random design quote at request. Features  the ability to share quotes onto social media platforms, ie. Twitter.</p>
+                    <!-- <p class="main-title-description"><a href="http://s.codepen.io/jpoechill/debug/YWELoq" style="color: #000000;">View Demo...</a><br><a href="http://codepen.io/jpoechill/pen/YWELoq" style="color: #000000;">View on CodePen...</a></p> -->
+                    <!-- <p class="">
+                      <ul class="tags">
+                        <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
+                        <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
+                        <li><a href="#" onClick="return false;" class="tag">Design Quotes API</a></li>
+                      </ul>
+                    </p> -->
+                    <div style="padding-top: 10px;">
+                      <ul class="tags">
+                        <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
+                        <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
+                        <li><a href="#" onClick="return false;" class="tag">Design Quotes API</a></li>
+                      </ul>
+                    </div>
+                    <hr>
+                    <div style="display: inline;">
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="http://s.codepen.io/jpoechill/debug/YWELoq" style="color: #000000;">View Demo</a>
+                      </div>
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="http://codepen.io/jpoechill/pen/YWELoq" style="color: #000000;">View on Github</a></p>
+                      </div>
+                    </div>
+                </div>
+              </div>
+              <!-- <div class="col-md-4">
                 <p class="image-title">Tribute Page</p>
                 <div id="img-rounded-corners">
                   <a href="http://s.codepen.io/jpoechill/debug/XKRGXB"><img src="img/tributeali_ss.png" width="100%" height="100%"></a>
@@ -231,8 +334,8 @@
                     <li><a href="#" onClick="return false;" class="tag">Angular.js</a></li>
                   </ul>
                 </p>
-              </div>
-              <div class="col-md-3">
+              </div> -->
+              <!-- <div class="col-md-3">
                 <p class="image-title">Frogger Arcade Clone</p>
                 <div id="img-rounded-corners">
                   <a href="http://jpoechill.github.io/fend-arcadegame/"><img src="img/froggerarcade_ss.png" width="100%" height="100%"></a>
@@ -246,8 +349,8 @@
                       <li><a href="#" onClick="return false;" class="tag">OOP</a></li>
                     </ul>
                 </p>
-              </div>
-              <div class="col-md-3">
+              </div> -->
+              <!-- <div class="col-md-3">
                 <p class="image-title">Website Optimization</p>
                 <div id="img-rounded-corners">
                   <a href="https://jpoechill.github.io/fend-weboptimize/views/pizza.html"><img src="img/websiteopti.png" width="100%" height="100%"></a>
@@ -260,7 +363,7 @@
                       <li><a href="#" onClick="return false;" class="tag">Google PageSpeed</a></li>
                     </ul>
                 </p>
-              </div>
+              </div> -->
             </div>
           </div>
       </div>
@@ -377,7 +480,8 @@
             </div>
             <div class="col-md-5">
               <p id="body-text-copyright">
-                Header photo made with photography by <a href="http://unsplash.com">Unsplash</a>. <br>Website coded by hand, with <i class="fa fa-heart" aria-hidden="true" style="color: darkred; font-size: 12px; margin-left: 2px;"> </i>.<br>
+                Header photo made with photography by <a href="http://unsplash.com">Unsplash</a>. <br>
+                <!-- <br>Website coded by hand, with <i class="fa fa-heart" aria-hidden="true" style="color: darkred; font-size: 12px; margin-left: 2px;"> </i>.<br> -->
                 Polo Rith © 2016<br>
                 </p>
             </div>
@@ -417,6 +521,7 @@
 
 <!-- Start Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Crimson+Text:400,400italic' rel='stylesheet' type='text/css'>
