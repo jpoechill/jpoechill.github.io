@@ -18,6 +18,10 @@ var quotesJSON = [
   //   author: "Sahil Lavingia, Founder/CEO via. Gumroad"
   // },
   {
+    quote: "The best way to learn how to write code is to write code.",
+    author: "Kyle Simpson, You Don't Know Javascript"
+  },
+  {
     quote: "Keep dancing.",
     author: "Eric Elliot, Javascript Guru & Writer"
   }

@@ -223,7 +223,7 @@
 .my-btn {
     background: #ffffff !important;
     font-size: 10px !important;
-    border-radius: 24px !important;
+    border-radius: 10px !important;
     font-family: 'Montserrat', sans-serif !important;
     padding: 10px 30px 10px 30px !important;
     border: solid #eeeeee 2px !important;
@@ -232,22 +232,22 @@
 
 input[type=text] {
     width: 100%;
-    padding: 12px 20px;
+    padding: 6px 12px;
     margin: 8px 0;
     border: 1px;
     color: black;
-    border-radius: 20px;
+    border-radius: 4px;
     font-family: 'Montserrat', sans-serif !important;
     /* box-sizing: border-box; */
 }
 
 textarea {
     width: 100%;
-    padding: 12px 20px;
+    padding: 6px 12px;
     margin: 8px 0;
     border: 1px;
     color: black;
-    border-radius: 20px;
+    border-radius: 4px;
     font-family: 'Montserrat', sans-serif !important;
     /* box-sizing: border-box; */
 }

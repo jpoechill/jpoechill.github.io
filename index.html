@@ -51,7 +51,7 @@
                     <li class="fadein"><a href="#contact" id="caps">CONTACT</a></li>
                     <li class="fadein"><a id="caps"> | </a></li>
                     <li class="fadein"><a href="https://medium.com/@jpoechill/" id="caps">BLOG</a></li>
-                    <li style="padding-top: 0px;"><a href="#" onClick="return false;"><img src="img/avatar.jpg" width="40px" style="border-radius: 40px;" alt="Polo Avatar" /></a></li>
+                    <li style="padding-top: 0px;"><a href="#" onClick="return false;"><img src="img/avatar.jpg" width="40px" style="border-radius: 4px;" alt="Polo Avatar" /></a></li>
                   </ul>
                 </div>
               </div>
@@ -81,12 +81,12 @@
                   </p>
                 </div> -->
                 <div class="col-md-12" align="center" style="margin-top: 6px;">
-                  <p id="header-body-text" style="display: inline-block; width: 930px;">
+                  <p id="header-body-text" style="display: inline-block; width: 80%;">
                   I'm a designer turned developer, currently living in Oakland, California. I made this website as an opportunity to showcase some of my most recent learning and personal projects in web development. Coming from a background in design and the arts (see <a href="" style="color: #F4F6F6;">drawing</a>), I've been able to take the last year to teach myself how to code. Amid some frustrations and many a nights, I can say that I have gained but a strong understanding of HTML/CSS, Javascript, and of an on-going variety of Javascript frameworks and APIs. </p>
-                  <p id="header-body-text" style="display: inline-block; width: 930px;">
+                  <p id="header-body-text" style="display: inline-block; width: 80%;">
                     Because this website is a work in progress, please feel free to return and see new projects.
                   </p>
-                  <p id="header-body-text" style="display: inline-block; width: 930px;">
+                  <p id="header-body-text" style="display: inline-block; width: 80%;">
                     Thank you much for visiting :)
                   </p>
 
@@ -115,6 +115,37 @@
       <div class="row">
         <div class="col-md-12">
           <div class="main-body" >
+
+            <div class="col-md-4">
+              <div class="col-md-12 item">
+                <a href="https://ng-coeans.herokuapp.com/"><div id="img-rounded-corners">
+                  <img src="img/oceans.png" width="100%" height="100%">
+                </div></a>
+                <p class="image-title">Oceans App</p>
+                <p class="main-title-description"> Oceans is a single-page application displaying information of world oceans by their sea-bodies. Data is fetched in real-time from a mocked-backend returning ocean information including tide, temperature, and other conditions. Features also include push notifications, offline-first, and accessibility. </p>
+                <div style="padding-top: 10px;">
+                    <ul class="tags">
+                      <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular JS</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Service Workers API</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Dexie.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular-route.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular-mock.js</a></li>
+                    </ul>
+                  </div>
+                  <hr>
+                    <div style="display: inline;">
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="https://ng-oceans.herokuapp.com/" style="color: #000000;">View Demo</a>
+                      </div>
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/oceans" style="color: #000000;">View on Github</a></p>
+                      </div>
+                    </div>
+              </div>
+            </div>
             <div class="col-md-4">
               <div class="col-md-12 item">
                 <a href="https://restaurantor.herokuapp.com/"><div id="img-rounded-corners">
@@ -129,12 +160,12 @@
                       <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
 
                       <li><a href="#" onClick="return false;" class="tag">Chart.js</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Angular-Chart.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular-chart.js</a></li>
                       <li><a href="#" onClick="return false;" class="tag">Leaflet.js</a></li>
 
                       <li><a href="#" onClick="return false;" class="tag">Smart-table.js</a></li>
                       <li><a href="#" onClick="return false;" class="tag">Gulp</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Angular.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular JS</a></li>
                     </ul>
                   </div>
                   <hr>
@@ -161,7 +192,8 @@
                     <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
                     <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
                     <li><a href="#" onClick="return false;" class="tag">Gulp</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Angular.js</a></li>
+                    <li><a href="#" onClick="return false;" class="tag">Angular JS</a></li>
+                    <li><a href="#" onClick="return false;" class="tag">Facebook API</a></li>
                     <li><a href="#" onClick="return false;" class="tag">Firebase API</a></li>
                   </ul>
                 </div>
@@ -176,59 +208,44 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="col-md-12 item">
-              <a href="https://bartor.herokuapp.com/"><div id="img-rounded-corners">
-                <img src="img/bartor.png" width="100%" height="100%">
-              </div></a>
-              <p class="image-title">Transportation App</p>
-              <p class="main-title-description"> A realtime, Bart schedule tracker that utilizes offline functionality with ServiceWorkers and IndexedDB.</p>
-              <!-- <p class="main-title-description"><a href="https://bartor.herokuapp.com/" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github...</a></p> -->
-              <!-- <p class=""> -->
-              <div style="padding-top: 10px;">
-                  <ul class="tags">
-                    <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Gulp</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Angular.js</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">BART API</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">ServiceWorkers API</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">IndexedDB API</a></li>
-                  </ul>
-                </div>
-                <hr>
-                  <div style="display: inline;">
-                    <div class="col-md-6" style="display: inline;">
-                      <p class="main-title-description" style="padding-top: 0px;"><a href="https://bartor.herokuapp.com/" style="color: #000000;">View Demo</a>
-                    </div>
-                    <div class="col-md-6" style="display: inline;">
-                      <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github</a></p>
-                    </div>
-                  </div>
-                </div>
-            </div>
           </div>
         </div>
       </div>
       <div class="row" >
           <div class="col-md-12">
             <div class="main-body">
-              <!-- <div class="col-md-3">
-                <p class="image-title">Algorithm Tracker</p>
-                <div id="img-rounded-corners">
-                  <a href="https://jpoechill.github.io/compu-algorithms/"><img src="img/myalgorithms.png" width="100%" height="100%"></a>
-                </div>
-                <p class="main-title-description">A single page website mapping all of the programming challenges and exercises I've been able to complete so far. Hoping to continute with more as good time permits.</p>
-                <p class="main-title-description"><a href="https://jpoechill.github.io/compu-algorithms/" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/compu-algorithms" style="color: #000000;">View on Github...</a></p>
-                <p class="">
+              <div class="col-md-4">
+                <div class="col-md-12 item">
+                <a href="https://bartor.herokuapp.com/"><div id="img-rounded-corners">
+                  <img src="img/bartor.png" width="100%" height="100%">
+                </div></a>
+                <p class="image-title">Transportation App</p>
+                <p class="main-title-description"> A realtime, Bart schedule tracker that utilizes offline functionality with ServiceWorkers and IndexedDB.</p>
+                <!-- <p class="main-title-description"><a href="https://bartor.herokuapp.com/" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github...</a></p> -->
+                <!-- <p class=""> -->
+                <div style="padding-top: 10px;">
                     <ul class="tags">
                       <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
                       <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Gulp</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Angular JS</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">BART API</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">ServiceWorkers API</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">IndexedDB API</a></li>
                     </ul>
-                </p>
-              </div> -->
+                  </div>
+                  <hr>
+                    <div style="display: inline;">
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="https://bartor.herokuapp.com/" style="color: #000000;">View Demo</a>
+                      </div>
+                      <div class="col-md-6" style="display: inline;">
+                        <p class="main-title-description" style="padding-top: 0px;"><a href="https://github.com/jpoechill/transportation-app" style="color: #000000;">View on Github</a></p>
+                      </div>
+                    </div>
+                  </div>
+              </div>
 
               <div class="col-md-4">
                 <div class="col-md-12 item">
@@ -243,7 +260,7 @@
                       <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
                       <li><a href="#" onClick="return false;" class="tag">Bootstrap Validator</a></li>
                       <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Gulp.js</a></li>
+                      <li><a href="#" onClick="return false;" class="tag">Gulp</a></li>
                       <li><a href="#" onClick="return false;" class="tag">Google Places API</a></li>
                     </ul>
                   </div>
@@ -287,83 +304,7 @@
                 </div>
               </div>
 
-              <div class="col-md-4">
-                <div class="col-md-12 item">
-                  <div id="img-rounded-corners">
-                    <a href="http://s.codepen.io/jpoechill/debug/YWELoq"><img src="img/designquote_ss.png" width="100%" height="100%"></a>
-                  </div>
-                  <p class="image-title">Random Quote Machine</p>
-                  <p class="main-title-description">A simple web app that fetches and displays a random design quote at request. Features  the ability to share quotes onto social media platforms, ie. Twitter.</p>
-                    <!-- <p class="main-title-description"><a href="http://s.codepen.io/jpoechill/debug/YWELoq" style="color: #000000;">View Demo...</a><br><a href="http://codepen.io/jpoechill/pen/YWELoq" style="color: #000000;">View on CodePen...</a></p> -->
-                    <!-- <p class="">
-                      <ul class="tags">
-                        <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                        <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                        <li><a href="#" onClick="return false;" class="tag">Design Quotes API</a></li>
-                      </ul>
-                    </p> -->
-                    <div style="padding-top: 10px;">
-                      <ul class="tags">
-                        <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                        <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                        <li><a href="#" onClick="return false;" class="tag">Design Quotes API</a></li>
-                      </ul>
-                    </div>
-                    <hr>
-                    <div style="display: inline;">
-                      <div class="col-md-6" style="display: inline;">
-                        <p class="main-title-description" style="padding-top: 0px;"><a href="http://s.codepen.io/jpoechill/debug/YWELoq" style="color: #000000;">View Demo</a>
-                      </div>
-                      <div class="col-md-6" style="display: inline;">
-                        <p class="main-title-description" style="padding-top: 0px;"><a href="http://codepen.io/jpoechill/pen/YWELoq" style="color: #000000;">View on Github</a></p>
-                      </div>
-                    </div>
-                </div>
-              </div>
-              <!-- <div class="col-md-4">
-                <p class="image-title">Tribute Page</p>
-                <div id="img-rounded-corners">
-                  <a href="http://s.codepen.io/jpoechill/debug/XKRGXB"><img src="img/tributeali_ss.png" width="100%" height="100%"></a>
-                </div>
-                <p class="main-title-description">A single page website making tribute to the extraordinary, and heroic boxer, Muhammed Ali. It was made with the Bootstrap 3 framework, and the Montserrat font.</p>
-                <p class="main-title-description"><a href="http://s.codepen.io/jpoechill/debug/XKRGXB" style="color: #000000;">View Demo...</a><br><a href="http://codepen.io/jpoechill/pen/XKRGXB" style="color: #000000;">View on Github...</a></p>
-                <p class="technologies">
-                  <ul class="tags">
-                    <li><a href="#" onClick="return false;" class="tag">HTML/CSS</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Bootstrap</a></li>
-                    <li><a href="#" onClick="return false;" class="tag">Angular.js</a></li>
-                  </ul>
-                </p>
-              </div> -->
-              <!-- <div class="col-md-3">
-                <p class="image-title">Frogger Arcade Clone</p>
-                <div id="img-rounded-corners">
-                  <a href="http://jpoechill.github.io/fend-arcadegame/"><img src="img/froggerarcade_ss.png" width="100%" height="100%"></a>
-                </div>
-                <p class="main-title-description">A recreation of the classic arcade game Frogger. This project was an excerise in practicing object-oriented programming techniques in Javascript. HTML5 Canvas was used to display and manipulate animations of sprites.</p>
-                <p class="main-title-description"><a href="http://jpoechill.github.io/fend-arcadegame/" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/fend-arcadegame" style="color: #000000;">View on Github...</a></p>
-                <p class="">
-                    <ul class="tags">
-                      <li><a href="#" onClick="return false;" class="tag">HTML5 Canvas</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">OOP</a></li>
-                    </ul>
-                </p>
-              </div> -->
-              <!-- <div class="col-md-3">
-                <p class="image-title">Website Optimization</p>
-                <div id="img-rounded-corners">
-                  <a href="https://jpoechill.github.io/fend-weboptimize/views/pizza.html"><img src="img/websiteopti.png" width="100%" height="100%"></a>
-                </div>
-                <p class="main-title-description">A project investigating the browser's DOM, and for optimizing different techniques to increase page load speeds. The primary tool used being Google Page Speeds to measure and diagnose optimal functionality.</p>
-                <p class="main-title-description"><a href="https://jpoechill.github.io/fend-weboptimize/views/pizza.html" style="color: #000000;">View Demo...</a><br><a href="https://github.com/jpoechill/fend-weboptimize" style="color: #000000;">View on Github...</a></p>
-                <p class="">
-                    <ul class="tags">
-                      <li><a href="#" onClick="return false;" class="tag">Javascript</a></li>
-                      <li><a href="#" onClick="return false;" class="tag">Google PageSpeed</a></li>
-                    </ul>
-                </p>
-              </div> -->
+
             </div>
           </div>
       </div>
