@@ -9,22 +9,23 @@
 
 
 #myDiv {
-    background: url('../img/madc-2.jpg') center center;
+    background: url('../img/madc-3.jpg') center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    background-position: 0px -10px;
-    background-color: lightgrey;
+    /*background-position: 0px -10px;*/
+    /*background-color: rgb(55,153,255);*/
 }
 
 .header {
     /* background-color: #F6F6F6; */
+    /*background: url('../img/madc-2.jpg') center center;*/
     padding-bottom: 30px;
     /* background-image: url('https://jpoechill.github.io/fcc-portfolio-page/img/unsplash_darkguy-min.jpeg') */
     /* margin-bottom: 50px; */
 
-    height: 396px;
+    /*height: 396px;*/
 }
 
 .col-md-4 {
@@ -103,7 +104,7 @@
 }
 
 .main-body {
-    padding-top: 14px;
+    padding-top: 4px;
     color: black;
     font-family: 'Crimson Text', serif;
 }
